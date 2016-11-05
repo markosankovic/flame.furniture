@@ -32,6 +32,8 @@ body {
 
 a {
   color: #4f4f4f;
+  transition: color 150ms;
+  transition-timing-function: ease-out;
 }
 
 a:hover,
@@ -40,13 +42,25 @@ a:focus {
   text-decoration: none;
 }
 
+#header {
+  margin-bottom: 40px;
+}
+
 #logo {
+  margin-left: 15px;
   height: 100%;
 }
 
 #nav {
-  font-size: 12px;
-  margin: 40px auto 20px;
+  font-size: .72em;
+  margin-bottom: 20px;
+}
+
+#nav>div {
+  padding: 0 30px;
+}
+
+#nav>div>div {
   border-style: solid;
   border-width: 3px;
   border-radius: 3px;
@@ -54,102 +68,148 @@ a:focus {
   border-image: url("../images/nav-border.png") 3 3 3 3 fill repeat;
 }
 
-#nav>div:first-child {
-  position: relative;
-}
-
-#nav>div:first-child img {
-  display: block;
+#nav>div>div>div:first-child::after {
+  content: "";
   position: absolute;
-  top: 0;
   right: -5px;
+  top: 0;
+  height: 34px;
+  width: 11px;
+  background: url("../images/nav-separator.png") no-repeat right center;
 }
 
 @media (max-width: 992px) {
-  #nav>div:first-child img {
-    display: none;
+  #nav>div>div>div:first-child::after {
+    background: none;
   }
 }
 
 #nav a {
   display: block;
-  padding: 8px 0;
+  padding: 10px 0 9px 0;
 }
 
-#carousel a.carousel-control {
+#body a {
+  color: #e76649;
+}
+
+#body a:hover,
+#body a:focus {
+  color: #4f4f4f;
+}
+
+#carousel {
+  margin-bottom: 50px;
+}
+
+#carousel .carousel-control {
   background-image: none;
   opacity: 1;
 }
 
-#carousel a.carousel-control .carousel-lt {
-  width: 59px;
-  height: auto;
+#carousel .carousel-control .carousel-btn {
   position: absolute;
   top: 50%;
-  left: -32px;
   margin-top: -28px;
   display: inline-block;
-  transition: left .1s, margin-top .1s;
-  transition-timing-function: ease-out;
+  transition: left 60ms, right 60ms, margin-top 60ms;
+  transition-timing-function: ease-in;
 }
 
-#carousel a.carousel-control:active .carousel-lt {
+#carousel .left.carousel-control .carousel-btn {
+  left: -32px;
+}
+
+#carousel .left.carousel-control:active .carousel-btn {
   left: -38px;
   margin-top: -23px;
 }
 
-#carousel a.carousel-control .carousel-lt-border {
-  width: 66px;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: -40px;
-  margin-top: -28px;
-  display: inline-block;
-}
-
-@media (max-width: 768px) {
-  #carousel a.carousel-control .carousel-lt {
-    left: -6px;
-  }
-  #carousel a.carousel-control:active .carousel-lt {
-    left: -11px;
-  }
-  #carousel a.carousel-control .carousel-lt-border {
-    left: -14px;
-  }
-}
-
-#carousel a.carousel-control .carousel-gt {
-  position: absolute;
-  top: 50%;
+#carousel .right.carousel-control .carousel-btn {
   right: -32px;
-  margin-top: -28px;
-  display: inline-block;
-  transition: right .1s, margin-top .1s;
 }
 
-#carousel a.carousel-control:active .carousel-gt {
+#carousel .right.carousel-control:active .carousel-btn {
   right: -38px;
   margin-top: -23px;
 }
 
-#carousel a.carousel-control .carousel-gt-border {
+#carousel .carousel-control .carousel-btn-border {
   position: absolute;
   top: 50%;
-  right: -40px;
-  margin-top: -28px;
   display: inline-block;
 }
 
+#carousel .left.carousel-control .carousel-btn-border {
+  left: -40px;
+  margin-top: -28px;
+}
+
+#carousel .right.carousel-control .carousel-btn-border {
+  right: -40px;
+  margin-top: -28px;
+}
+
 @media (max-width: 768px) {
-  #carousel a.carousel-control .carousel-gt {
+  #carousel .left.carousel-control .carousel-btn {
+    left: -6px;
+  }
+  #carousel .left.carousel-control:active .carousel-btn {
+    left: -11px;
+  }
+  #carousel .left.carousel-control .carousel-btn-border {
+    left: -14px;
+  }
+  #carousel .right.carousel-control .carousel-btn {
     right: -6px;
   }
-  #carousel a.carousel-control:active .carousel-gt {
+  #carousel .right.carousel-control:active .carousel-btn {
     right: -11px;
   }
-  #carousel a.carousel-control .carousel-gt-border {
+  #carousel .right.carousel-control .carousel-btn-border {
     right: -14px;
+  }
+}
+
+#instagram {
+  font-size: .80em;
+  margin-bottom: 50px;
+}
+
+#instagram>div {
+  padding: 0 30px;
+}
+
+#instagram>div>div {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 3px;
+  border-color: #4f4f4f;
+  border-image: url("../images/instagram-border.png") 2 2 2 2 fill repeat;
+  background: url("../images/line-pattern.png");
+}
+
+#instagram>div>div>div {
+  padding: 5px 16px;
+}
+
+#instagram>div>div>div:first-child::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 0;
+  height: 26px;
+  width: 7px;
+  background: url("../images/instagram-separator.png") no-repeat right center;
+}
+
+#instagram>div>div>div:first-child {
+  background-color: #f2f2f2;
+}
+
+@media (max-width: 768px) {
+  #instagram>div>div,
+  #instagram>div>div>div:first-child::after {
+    background: none;
   }
 }
