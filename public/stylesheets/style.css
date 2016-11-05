@@ -46,7 +46,7 @@ a:focus {
 
 #nav {
   font-size: 12px;
-  margin-top: 40px;
+  margin: 40px auto 20px;
   border-style: solid;
   border-width: 3px;
   border-radius: 3px;
@@ -59,19 +59,97 @@ a:focus {
 }
 
 #nav>div:first-child img {
-  display: none;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: -5px;
 }
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
   #nav>div:first-child img {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: -5px;
+    display: none;
   }
 }
 
 #nav a {
   display: block;
   padding: 8px 0;
+}
+
+#carousel a.carousel-control {
+  background-image: none;
+  opacity: 1;
+}
+
+#carousel a.carousel-control .carousel-lt {
+  width: 59px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: -32px;
+  margin-top: -28px;
+  display: inline-block;
+  transition: left .1s, margin-top .1s;
+  transition-timing-function: ease-out;
+}
+
+#carousel a.carousel-control:active .carousel-lt {
+  left: -38px;
+  margin-top: -23px;
+}
+
+#carousel a.carousel-control .carousel-lt-border {
+  width: 66px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: -40px;
+  margin-top: -28px;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  #carousel a.carousel-control .carousel-lt {
+    left: -6px;
+  }
+  #carousel a.carousel-control:active .carousel-lt {
+    left: -11px;
+  }
+  #carousel a.carousel-control .carousel-lt-border {
+    left: -14px;
+  }
+}
+
+#carousel a.carousel-control .carousel-gt {
+  position: absolute;
+  top: 50%;
+  right: -32px;
+  margin-top: -28px;
+  display: inline-block;
+  transition: right .1s, margin-top .1s;
+}
+
+#carousel a.carousel-control:active .carousel-gt {
+  right: -38px;
+  margin-top: -23px;
+}
+
+#carousel a.carousel-control .carousel-gt-border {
+  position: absolute;
+  top: 50%;
+  right: -40px;
+  margin-top: -28px;
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  #carousel a.carousel-control .carousel-gt {
+    right: -6px;
+  }
+  #carousel a.carousel-control:active .carousel-gt {
+    right: -11px;
+  }
+  #carousel a.carousel-control .carousel-gt-border {
+    right: -14px;
+  }
 }
