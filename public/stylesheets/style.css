@@ -33,7 +33,7 @@ body {
 a {
   color: #4f4f4f;
   transition: color 150ms;
-  transition-timing-function: ease-out;
+  transition-timing-function: ease-in;
 }
 
 a:hover,
@@ -48,7 +48,13 @@ a:focus {
 
 #logo {
   margin-left: 15px;
-  height: 100%;
+  transition: -webkit-filter 150ms, filter 150ms;
+  transition-timing-function: ease-in;
+}
+
+#logo:hover {
+  -webkit-filter: brightness(50%);
+  filter: brightness(50%);
 }
 
 #nav {
