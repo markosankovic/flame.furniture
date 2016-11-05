@@ -249,7 +249,7 @@ a:focus {
   background-color: #f2f2f2;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   #instagram>div>div,
   #instagram>div>div>div:first-child::after {
     background: none;
