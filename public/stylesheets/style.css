@@ -78,6 +78,7 @@ a:focus {
 
 #nav {
   font-size: .72em;
+  letter-spacing: .1em;
   margin-bottom: 20px;
 }
 
@@ -213,6 +214,7 @@ a:focus {
 
 #instagram {
   font-size: .80em;
+  letter-spacing: .2em;
   margin-bottom: 50px;
 }
 
