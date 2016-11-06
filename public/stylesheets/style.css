@@ -187,23 +187,9 @@ a:focus {
 }
 
 @media (max-width: 768px) {
-  #carousel .left.carousel-control .carousel-btn {
-    left: -6px;
-  }
-  #carousel .left.carousel-control:active .carousel-btn {
-    left: -11px;
-  }
-  #carousel .left.carousel-control .carousel-btn-border {
-    left: -14px;
-  }
-  #carousel .right.carousel-control .carousel-btn {
-    right: -6px;
-  }
-  #carousel .right.carousel-control:active .carousel-btn {
-    right: -11px;
-  }
-  #carousel .right.carousel-control .carousel-btn-border {
-    right: -14px;
+  .carousel-btn,
+  .carousel-btn-border {
+    display: none !important;
   }
 }
 
