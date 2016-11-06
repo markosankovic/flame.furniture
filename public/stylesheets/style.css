@@ -168,6 +168,14 @@ textarea.form-control {
   border-image: url("../images/nav-border.png") 3 3 3 3 fill repeat;
 }
 
+#nav>div>div>div:first-child a {
+  color: #e76649;
+}
+
+#nav>div>div>div:first-child a:hover {
+  color: #4f4f4f;
+}
+
 #nav>div>div>div:first-child::after {
   content: "";
   position: absolute;
@@ -219,6 +227,7 @@ textarea.form-control {
   display: inline-block;
   transition: left 60ms, right 60ms, margin-top 60ms;
   transition-timing-function: ease-in;
+  opacity: .95;
 }
 
 #carousel .left.carousel-control .carousel-btn {
@@ -533,6 +542,14 @@ textarea.form-control {
 
 #contact-info>div {
   padding: 0 30px;
+}
+
+#contact-info>div>div>div:first-child {
+  padding: 0;
+}
+
+#contact-info>div>div>div:last-child {
+  padding: 40px;
 }
 
 #contact-info>div>div {
