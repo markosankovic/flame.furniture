@@ -87,8 +87,13 @@ hr {
   border: none;
 }
 
+.btn-submit.focus,
+.btn-submit:focus,
 .btn-submit:hover {
   color: #FFF;
+}
+
+.btn-submit:hover {
   background-color: #b3513c;
 }
 
