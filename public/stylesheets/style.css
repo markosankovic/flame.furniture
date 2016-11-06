@@ -51,6 +51,75 @@ a:focus {
   text-decoration: none;
 }
 
+hr {
+  height: 16px;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 3px;
+  border-color: #4f4f4f;
+  border-image: url("../images/hr-border.png") 3 5 3 5 fill repeat;
+  background: url("../images/hr-pattern.png") repeat-x;
+  margin-bottom: 30px;
+}
+
+
+/**
+* Form
+*/
+
+.form-control:focus {
+  border-color: inherit !important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(0, 0, 0, .4);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(0, 0, 0, .4);
+}
+
+.btn {
+  letter-spacing: .2em;
+  font-size: .72em;
+  padding: 8px 48px;
+  transition: background-color 150ms;
+  transition-timing-function: ease-in;
+}
+
+.btn-submit {
+  color: #FFF;
+  background-color: #e0664c;
+  border: none;
+}
+
+.btn-submit:hover {
+  color: #FFF;
+  background-color: #b3513c;
+}
+
+.form-group label {
+  font-size: 0.9em;
+}
+
+input.form-control,
+textarea.form-control {
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 3px;
+  border-color: #4f4f4f;
+}
+
+.form-control-border-1 {
+  border-image: url("../images/form-control-border-1.png") 3 3 3 3 fill repeat;
+}
+
+.form-control-border-2 {
+  border-image: url("../images/form-control-border-2.png") 3 3 3 3 fill repeat;
+}
+
+.form-control-border-3 {
+  border-image: url("../images/form-control-border-3.png") 3 3 3 3 fill repeat;
+}
+
+.form-control-border-4 {
+  border-image: url("../images/form-control-border-4.png") 3 3 3 3 fill repeat;
+}
+
 
 /**
 * Header
@@ -412,7 +481,7 @@ a:focus {
   border-image: url("../images/footer-border.png") 2 2 2 2 fill repeat;
 }
 
-#footer .col-newsletter>div {
+#footer .col-newsletter>div:last-child {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -455,4 +524,40 @@ a:focus {
 #gallery .brick img {
   margin: 0;
   display: block;
+}
+
+
+/**
+* Contact
+*/
+
+#contact-info>div {
+  padding: 0 30px;
+}
+
+#contact-info>div>div {
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 3px;
+  border-color: #4f4f4f;
+  border-image: url("../images/contact-info-border.png") 3 3 3 3 fill repeat;
+}
+
+#contact-info>div>div>div:first-child::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: 0;
+  height: 399px;
+  width: 8px;
+  background: url("../images/contact-info-separator.png") no-repeat right center;
+}
+
+@media (max-width: 768px) {
+  #contact-info>div>div>div:first-child::after {
+    background: none;
+  }
+  #contact-info>div>div>div:first-child {
+    border-bottom: 3px solid #414141;
+  }
 }
