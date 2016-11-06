@@ -109,7 +109,7 @@ a:focus {
   background: url("../images/nav-separator.png") no-repeat right center;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
   #nav>div>div>div:first-child::after {
     background: none;
   }
@@ -207,55 +207,9 @@ a:focus {
   }
 }
 
-
-/**
-* Instagram
-*/
-
-#instagram {
-  font-size: .80em;
-  letter-spacing: .2em;
-  margin-bottom: 50px;
+#carousel .carousel-inner {
+  background-color: #FFF;
 }
-
-#instagram>div {
-  padding: 0 30px;
-}
-
-#instagram>div>div {
-  border-style: solid;
-  border-width: 2px;
-  border-radius: 3px;
-  border-color: #4f4f4f;
-  border-image: url("../images/instagram-border.png") 2 2 2 2 fill repeat;
-  background: url("../images/line-pattern.png");
-}
-
-#instagram>div>div>div {
-  padding: 5px 16px;
-}
-
-#instagram>div>div>div:first-child::after {
-  content: "";
-  position: absolute;
-  right: -3px;
-  top: 0;
-  height: 26px;
-  width: 7px;
-  background: url("../images/instagram-separator.png") no-repeat right center;
-}
-
-#instagram>div>div>div:first-child {
-  background-color: #f2f2f2;
-}
-
-@media (max-width: 992px) {
-  #instagram>div>div,
-  #instagram>div>div>div:first-child::after {
-    background: none;
-  }
-}
-
 
 /**
 * Ribbon
@@ -313,4 +267,191 @@ a:focus {
   border-right: 3px solid #404040;
   border-bottom: 3px solid transparent;
   border-top: 3px solid #404040;
+}
+
+
+/**
+* Instagram
+*/
+
+#instagram {
+  font-size: .80em;
+  letter-spacing: .2em;
+  margin-bottom: 50px;
+}
+
+#instagram>div {
+  padding: 0 30px;
+}
+
+#instagram>div>div {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 3px;
+  border-color: #4f4f4f;
+  border-image: url("../images/instagram-border.png") 2 2 2 2 fill repeat;
+  background: url("../images/instagram-line-pattern.png");
+}
+
+#instagram>div>div>div {
+  padding: 5px 16px;
+}
+
+#instagram>div>div>div:first-child::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 0;
+  height: 26px;
+  width: 7px;
+  background: url("../images/instagram-separator.png") no-repeat right center;
+}
+
+#instagram>div>div>div:first-child {
+  background-color: #f2f2f2;
+}
+
+@media (max-width: 992px) {
+  #instagram>div>div,
+  #instagram>div>div>div:first-child::after {
+    background: none;
+  }
+}
+
+
+/**
+* Footer
+*/
+
+#footer {
+  letter-spacing: .1em;
+  margin-bottom: 50px;
+}
+
+#footer>div {
+  padding: 0 30px;
+}
+
+#footer>div>div {
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 3px;
+  border-color: #4f4f4f;
+  border-image: url("../images/footer-border.png") 2 2 2 2 fill repeat;
+}
+
+#footer>div>div:first-child>div {
+  position: relative;
+  height: 123px;
+  padding: 20px;
+}
+
+#footer>div>div+div {
+  margin-top: -2px;
+}
+
+#footer a {
+  color: #e76649;
+}
+
+#footer a:hover,
+#footer a:focus {
+  color: #4f4f4f;
+}
+
+#footer .col-links ul {
+  font-size: .72em;
+  margin: 4px 0 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+#footer .col-links ul li {
+  list-style: none;
+}
+
+#footer .col-links a {
+  color: #979797;
+}
+
+#footer .col-links a:hover,
+#footer .col-links a:focus {
+  color: #e76649;
+}
+
+#footer .col-copy {
+  font-size: .8em;
+  padding: 6px 0;
+}
+
+#footer .col-links::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: 0;
+  height: 123px;
+  width: 8px;
+  background: url("../images/footer-col-links-separator.png") no-repeat right bottom;
+  z-index: 10;
+}
+
+#footer .col-empty::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: 0;
+  height: 123px;
+  width: 8px;
+  background: url("../images/footer-col-empty-separator.png") no-repeat right bottom;
+}
+
+@media (max-width: 768px) {
+  #footer .col-empty::after {
+    background: none;
+  }
+}
+
+#footer .col-empty>div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 34px;
+  background: url("../images/footer-col-empty-line-pattern.png");
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-radius: 3px;
+  border-top-color: #4f4f4f;
+  border-image: url("../images/footer-border.png") 2 2 2 2 fill repeat;
+}
+
+#footer .col-newsletter>div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 34px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-radius: 3px;
+  border-top-color: #4f4f4f;
+  border-image: url("../images/footer-border.png") 2 2 2 2 fill repeat;
+  padding-top: 2px;
+}
+
+#footer .fa {
+  transition: color 150ms;
+  transition-timing-function: ease-in;
+}
+
+#footer .fa:hover {
+  color: #4f4f4f;
+}
+
+#footer .fa-facebook-square {
+  color: #4862a3;
+}
+
+#footer .fa-instagram {
+  color: #000000;
 }

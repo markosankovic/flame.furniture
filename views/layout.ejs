@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel='stylesheet' href='/stylesheets/style.css' />
 
+  <script src="https://use.fontawesome.com/ad98d6239d.js"></script>
+
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
   <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -44,23 +46,23 @@
     </div>
 
     <div class="row" id="nav">
-      <div class="col-md-12">
+      <div class="col-sm-12">
         <div class="row">
-          <div class="col-md-2 text-center">
+          <div class="col-sm-2 text-center">
             <a href="/">HOME</a>
           </div>
-          <div class="col-md-10">
+          <div class="col-sm-10">
             <div class="row">
-              <div class="col-md-3 text-center">
+              <div class="col-sm-3 text-center">
                 <a href="/about">ABOUT US</a>
               </div>
-              <div class="col-md-3 text-center">
+              <div class="col-sm-3 text-center">
                 <a href="/shop">PRODUCTS/SHOP</a>
               </div>
-              <div class="col-md-3 text-center">
+              <div class="col-sm-3 text-center">
                 <a href="/gallery">GALLERY</a>
               </div>
-              <div class="col-md-3 text-center">
+              <div class="col-sm-3 text-center">
                 <a href="/contact">CONTACT US</a>
               </div>
             </div>
@@ -77,15 +79,53 @@
 
     <div class="row" id="footer">
       <div class="col-md-12">
-        <h2>Footer</h2>
+        <div class="row">
+          <div class="col-xs-5 col-md-3 col-links">
+            <ul>
+              <li><a href="/">HOME</a></li>
+              <li><a href="/about">ABOUT US</a></li>
+              <li><a href="/shop">PRODUCTS/SHOP</a></li>
+              <li><a href="/gallery">GALLERY</a></li>
+              <li><a href="/contact">CONTACT US</a></li>
+            </ul>
+          </div>
+          <div class="col-md-5 hidden-sm hidden-xs col-empty">
+            <div class="footer-col-empty-line-pattern"></div>
+          </div>
+          <div class="col-xs-7 col-md-4 col-newsletter">
+            <div class="text-center">
+              <a href="https://www.facebook.com/flame.furniture" data-toggle="tooltip" data-placement="bottom" title="Visit our Facebook page"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+              <a href="https://www.instagram.com/flame.furniture" data-toggle="tooltip" data-placement="bottom" title="Visit our Instagram page"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-copy text-center">
+            &copy; 2016 <a href="/">FLAME FURNITURE INC.</a>, built by <a href="http://zeroeleven.rs">ZEROELEVEN</a>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 
   </div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    $(document).bind('keyup', function(e) {
+      if (e.which == 39) {
+        $('.carousel').carousel('next');
+      } else if (e.which == 37) {
+        $('.carousel').carousel('prev');
+      }
+    });
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 </body>
 
 </html>
