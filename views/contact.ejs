@@ -20,16 +20,16 @@
               function init_map() {
                 var myOptions = {
                   zoom: 14,
-                  center: new google.maps.LatLng(44.804099, 20.484360599999945),
+                  center: new google.maps.LatLng(44.7735444, 20.5383399),
                   mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
                 map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
                 marker = new google.maps.Marker({
                   map: map,
-                  position: new google.maps.LatLng(44.804099, 20.484360599999945)
+                  position: new google.maps.LatLng(44.7735444, 20.5383399)
                 });
                 infowindow = new google.maps.InfoWindow({
-                  content: '<strong>FLAME Furniture Inc.</strong><br>IGMANSKA 2, BELGRADE<br>'
+                  content: '<strong>FLAME Furniture Inc.</strong><br>BEKERELOVA 24, 11050 MALI MOKRI LUG BELGRADE<br>'
                 });
                 google.maps.event.addListener(marker, 'click', function() {
                   infowindow.open(map, marker);
@@ -41,7 +41,7 @@
           </div>
           <div class="col-sm-4">
             <h4>OUR HQ IS LOCATED AT</h4>
-            <div>IGMANSKA 2<br/>11000 BELGRADE<br/>SERBIA</div>
+            <div>BEKERELOVA 24<br/>11050 MALI MOKRI LUG BELGRADE<br/>SERBIA</div>
             <h4>CALL US</h4>
             <div><a href="tel:381-64-2435333">+381 64 243 5333</a><br/><a href="tel:381-63-1199501">+381 63 119 9501</a><br/><a href="tel:381-64-224375">+381 64 224 375</a></div>
           </div>
