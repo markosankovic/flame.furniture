@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "lint": "eslint app.js",
+    "lint": "eslint app.js controllers/**/*.js",
     "server": "nodemon --exec \"npm run lint && npm start\" --ignore public/js"
   },
   "dependencies": {
