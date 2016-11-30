@@ -5,21 +5,28 @@
   "scripts": {
     "start": "node ./bin/www",
     "lint": "eslint app.js controllers/**/*.js",
-    "server": "nodemon --exec \"npm run lint && npm start\" --ignore public/js"
+    "server": "nodemon --exec \"npm run lint && npm start\" --ignore public/js",
+    "test": "mocha --recursive"
   },
   "dependencies": {
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
+    "dotenv": "^2.0.0",
     "ejs": "~2.5.2",
     "express": "~4.14.0",
     "express-ejs-layouts": "^2.2.0",
+    "mongodb": "^2.2.11",
+    "mongoose": "^4.7.0",
     "morgan": "~1.7.0",
     "nodemailer": "^2.6.4",
     "serve-favicon": "~2.3.0",
     "xoauth2": "^1.2.0"
   },
   "devDependencies": {
-    "eslint": "^3.11.0"
+    "chai": "^3.5.0",
+    "eslint": "^3.11.0",
+    "mocha": "^3.2.0",
+    "supertest": "^2.0.1"
   }
 }

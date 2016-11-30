@@ -202,12 +202,12 @@ textarea.form-control {
 * Body
 */
 
-#body a {
+a {
   color: #e76649;
 }
 
-#body a:hover,
-#body a:focus {
+a:hover,
+a:focus {
   color: #4f4f4f;
 }
 

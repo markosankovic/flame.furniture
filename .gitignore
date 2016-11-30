@@ -25,5 +25,8 @@ coverage
 # Benchmarking
 benchmarks/graphs
 
-# Environment variables
+# Environment variables for Docker container
 env.list
+
+# Environment variables for dotenv
+.env
