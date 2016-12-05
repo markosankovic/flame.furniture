@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // connect to mongodb
 mongoose.Promise = global.Promise; // use native promises
-//mongoose.connect(process.env.MONGOOSE_CONNECT_URI);
+mongoose.connect('mongodb://mongo:27017');
 
 app.use(require('./controllers'));
 
