@@ -10,5 +10,3 @@ RUN npm install nodemon eslint -g
 COPY . /app
 
 EXPOSE 3000
-
-CMD ["npm", "run", "server"]

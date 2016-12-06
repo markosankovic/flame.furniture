@@ -2,10 +2,6 @@ version: '2'
 services:
   app:
     build: .
-    ports:
-    - "3000:3000"
-    volumes:
-    - .:/app
     links:
     - mongo
   mongo:
@@ -14,4 +10,3 @@ services:
     - "27017:27017"
     volumes:
     - ./db:/var/lib/mongodb
-    restart: always
