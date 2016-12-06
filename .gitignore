@@ -30,3 +30,6 @@ env.list
 
 # Environment variables for dotenv
 .env
+
+# Database
+db
