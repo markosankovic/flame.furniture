@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
+  name: String, // Little Jumbo, Klemenza...
   type: String, // baseline or signature
   category: String, // tables, chairs, lamps...
-  name: String, // Little Jumbo, Klemenza...
-  size: String,
+  size: [String],
   material: String,
   description: String
 });

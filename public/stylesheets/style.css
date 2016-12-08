@@ -62,6 +62,14 @@ hr {
   margin-bottom: 30px;
 }
 
+.text-light {
+  font-weight: 300;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
 
 /**
 * Form
@@ -582,4 +590,33 @@ a:focus {
   #contact-info>div>div>div:first-child {
     border-bottom: 3px solid #414141;
   }
+}
+
+
+/**
+* Products.
+*/
+
+#products-categories {
+  list-style: none;
+  font-size: .72em;
+  margin-top: -10px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #414141;
+}
+
+#products-categories li {
+  display: inline-block;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.heading-baseline {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.heading-signature {
+  font-family: 'Satisfy', cursive;
+  text-transform: capitalize;
 }
