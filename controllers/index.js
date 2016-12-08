@@ -4,6 +4,8 @@ const mailer = require('nodemailer');
 
 const debug = require('debug')('flame.furniture:server');
 
+router.use('/products', require('./products'));
+
 /* GET home page. */
 router.get('/', (req, res) => {
   res.render('index', { title: 'FLAME Furniture Inc.' });
@@ -12,11 +14,6 @@ router.get('/', (req, res) => {
 /* GET about page. */
 router.get('/about', (req, res) => {
   res.render('about', { title: 'ABOUT - FLAME Furniture Inc.' });
-});
-
-/* GET shop page. */
-router.get('/shop', (req, res) => {
-  res.render('shop', { title: 'SHOP - FLAME Furniture Inc.' });
 });
 
 /* GET gallery page. */
