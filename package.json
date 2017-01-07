@@ -9,7 +9,6 @@
     "test": "mocha --recursive"
   },
   "dependencies": {
-    "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "dotenv": "^2.0.0",
@@ -18,7 +17,6 @@
     "express-ejs-layouts": "^2.2.0",
     "lodash": "^4.17.2",
     "mongodb": "^2.2.11",
-    "mongoose": "^4.7.0",
     "morgan": "~1.7.0",
     "nodemailer": "^2.6.4",
     "serve-favicon": "~2.3.0",
@@ -26,6 +24,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "eslint": "^3.11.0",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0",

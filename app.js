@@ -3,9 +3,8 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
-const mongoose = require('mongoose');
+const mongo = require('./mongo');
 
 require('dotenv').config(); // load environment variables from a .env file into process.env
 
@@ -20,15 +19,11 @@ app.use(expressLayouts);
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // connect to mongodb
-mongoose.Promise = global.Promise; // use native promises
-mongoose.connect('mongodb://mongo:27017');
-mongoose.set('debug', true);
+mongo.connect('mongodb://mongo:27017/ff');
 
 app.use(require('./controllers'));
 

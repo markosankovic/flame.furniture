@@ -4,6 +4,10 @@ services:
     build: .
     links:
     - mongo
+  mongo-seed:
+    build: ./mongo-seed
+    links:
+    - mongo
   mongo-express:
     image: mongo-express
     ports:

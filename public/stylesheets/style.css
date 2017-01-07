@@ -597,18 +597,58 @@ a:focus {
 * Products.
 */
 
-#products-categories {
+nav.categories ul {
+  padding: 0;
+  margin: 0;
   list-style: none;
+  text-transform: uppercase;
+}
+
+nav.categories>ul {
   font-size: .72em;
   margin-top: -10px;
   padding-bottom: 10px;
   border-bottom: 3px solid #414141;
 }
 
-#products-categories li {
+nav.categories>ul>li {
+  position: relative;
+}
+
+nav.categories ul li {
   display: inline-block;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding: 0 32px;
+  white-space: nowrap;
+}
+
+
+/* hide dropdowns by default */
+
+nav.categories ul ul {
+  display: none;
+  position: absolute;
+  top: 15px;
+  left: 0;
+  background-color: #f2f2f2;
+  border: 2px solid #414141;
+  padding: 8px 0;
+  z-index: 9;
+}
+
+
+/* display dropdowns on hover */
+
+nav.categories ul li:hover>ul {
+  display: inherit;
+}
+
+
+/* first tier dropdown */
+
+nav.categories ul ul li {
+  float: none;
+  display: list-item;
+  position: relative;
 }
 
 .heading-baseline {
@@ -619,4 +659,10 @@ a:focus {
 .heading-signature {
   font-family: 'Satisfy', cursive;
   text-transform: capitalize;
+}
+
+.category-title {
+  padding: 10px 0;
+  font-weight: lighter;
+  color: #979797;
 }

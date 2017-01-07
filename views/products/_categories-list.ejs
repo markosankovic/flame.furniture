@@ -1,12 +1,22 @@
 <div class="row">
   <div class="col-md-12">
-    <ul id="products-categories" class="text-center">
-      <li><a href="/products/<%= type %>">ALL</a></li>        
-      <li><a href="/products/<%= type %>/tables">TABLES</a></li>
-      <li><a href="/products/<%= type %>/chairs">CHAIRS</a></li>
-      <li><a href="/products/<%= type %>/lamps">LAMPS</a></li>
-      <li><a href="/products/<%= type %>/beds">BEDS</a></li>
-      <li><a href="/products/<%= type %>/accessories">ACCESSORIES</a></li>
-    </ul>
+    <nav class="categories text-center">
+      <ul>
+        <% for (let category of categories) { %>
+          <li>
+            <a href="/products/<%= category.slug %>"><%= category.name %></a>
+            <% if (category.subcategories && category.subcategories.length > 0) { %>
+              <ul class="text-left">
+                <% for (let subcategory of category.subcategories) { %>              
+                  <li>
+                    <a href="/products/<%= subcategory.slug %>"><%= subcategory.name %></a>
+                  </li>
+                <% } %>
+              </ul>
+            <% } %>
+          </li>
+        <% } %>
+      </ul>
+    </nav>
   </div>
 </div>

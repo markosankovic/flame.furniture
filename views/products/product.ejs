@@ -1,9 +1,12 @@
-<%- include('_categories-list', { categories: [], type: product.type }) %>
+<%- include('_categories-list', { categories: categories }) %>
+<% if (locals.category) { %>
+  <%- include('_category-title', { category: category }) %>
+<% } %>
 
-<div class="row">
-  <div class="col-md-12">
-    <h1>
-      <%= product.name %>
-    </h1>
-  </div>
+<div><img src="/images/products/<%= product.featured_image %>" width="120" height="80" /></div>
+<div>
+  <%= product.name %><br/>
+  <%= product.category.name %><br/>
+  <%= product.dimension %><br/>
+  <%= product.material %>
 </div>
