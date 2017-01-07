@@ -39,33 +39,37 @@
   <div class="container">
 
     <div class="row" id="header">
-      <div class="col-md-12">
+      <div class="col-md-6">
         <a href="/">
           <img src="/images/logo.png" id="logo" />
         </a>
       </div>
-      <div class="col-md-6"></div>
+      <div class="col-md-6 text-right">
+        <div id="locales">
+          <a class="locale" data-locale="sr">SRP</a> / <a class="locale" data-locale="en">ENG</a>
+        </div>
+      </div>
     </div>
 
     <div class="row" id="nav">
       <div class="col-sm-12">
         <div class="row">
           <div class="col-sm-2 text-center">
-            <a href="/">HOME</a>
+            <a href="/"><%= __('HOME') %></a>
           </div>
           <div class="col-sm-10">
             <div class="row">
               <div class="col-sm-3 text-center">
-                <a href="/about">ABOUT US</a>
+                <a href="/about"><%= __('ABOUT US') %></a>
               </div>
               <div class="col-sm-3 text-center">
-                <a href="/products">PRODUCTS</a>
+                <a href="/products"><%= __('PRODUCTS') %></a>
               </div>
               <div class="col-sm-3 text-center">
-                <a href="/gallery">GALLERY</a>
+                <a href="/gallery"><%= __('GALLERY') %></a>
               </div>
               <div class="col-sm-3 text-center">
-                <a href="/contact">CONTACT US</a>
+                <a href="/contact"><%= __('CONTACT') %></a>
               </div>
             </div>
           </div>
@@ -80,7 +84,7 @@
 
     <div class="row" id="body">
       <div class="col-md-12">
-        <%-body-%>
+        <%- body -%>
       </div>
     </div>
 
@@ -89,11 +93,11 @@
         <div class="row">
           <div class="col-xs-5 col-md-3 col-links">
             <ul>
-              <li><a href="/">HOME</a></li>
-              <li><a href="/about">ABOUT US</a></li>
-              <li><a href="/products">PRODUCTS</a></li>
-              <li><a href="/gallery">GALLERY</a></li>
-              <li><a href="/contact">CONTACT US</a></li>
+              <li><a href="/"><%= __('HOME') %></a></li>
+              <li><a href="/about"><%= __('ABOUT US') %></a></li>
+              <li><a href="/products"><%= __('PRODUCTS') %></a></li>
+              <li><a href="/gallery"><%= __('GALLERY') %></a></li>
+              <li><a href="/contact"><%= __('CONTACT') %></a></li>
             </ul>
           </div>
           <div class="col-md-5 hidden-sm hidden-xs col-empty">
@@ -101,7 +105,7 @@
           </div>
           <div class="col-xs-7 col-md-4 col-newsletter">
             <div class="text-center" style="margin-top:16px;">
-              CALL US: <a href="tel:381-64-2435333">+381 64 243 5333</a>
+              <%= __('CALL US') %>: <a href="tel:381-64-2435333">+381 64 243 5333</a>
             </div>
             <div class="text-center">
               <a href="https://www.facebook.com/flame.furniture" data-toggle="tooltip" data-placement="bottom" title="Visit our Facebook page"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
@@ -117,6 +121,18 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+    $('.locale').click(function (e) {
+      e.preventDefault();
+      var locale = $(e.currentTarget).data('locale');
+      var date = new Date();
+      date.setTime(date.getTime() + (7*24*60*60*1000));
+      document.cookie = "locale=" + locale + "; expires=" + date.toUTCString() + "; path=/";
+      location.reload();
+      return false;
+    });
+  </script>
 
   <script type="text/javascript">
     $(function() {

@@ -1,4 +1,5 @@
 const express = require('express');
+const i18n = require('i18n');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
@@ -21,6 +22,17 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// configure locales
+i18n.configure({
+  locales: ['en', 'sr'],
+  defaultLocale: 'en',
+  cookie: 'locale',
+  directory: __dirname + '/locales'
+});
+
+// i18n init parses req for language headers, cookies, etc.
+app.use(i18n.init);
 
 // connect to mongodb
 mongo.connect('mongodb://mongo:27017/ff');

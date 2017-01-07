@@ -1,4 +1,6 @@
 [
-  { "_id": "586f6cc83bfefcbe1ce643e6", "category_id": "586f6ce63bfefcbe1ce643e7", "lang": "en", "name": "KLEMENZA TV Table", "slug": "klemenza-tv-table", "dimension": "35 x 45h", "material": "Wood - Ash or Oak, Metal - Ribbed armature", "featured_image": "klemenza-1.jpg" },
-  { "_id": "58702bbc137500cdc46670d2", "category_id": "586f6d3b3bfefcbe1ce643e8", "lang": "en", "name": "AKORNA", "slug": "akorna", "dimension": "w. 100 cm / d. 45 cm / h. 58 cm", "material": "Wood - Recycled Oak", "featured_image": "akorna-1.jpg" }
+  { "_id": "586f6cc83bfefcbe1ce643e6", "category_id": "586f6ce63bfefcbe1ce643e7", "locale": "en", "name": "KLEMENZA TV Table", "slug": "klemenza-tv-table", "dimension": "35 x 45h", "material": "Wood - Ash or Oak, Metal - Ribbed armature", "featured_image": "klemenza-1.jpg" },
+  { "_id": "58702bbc137500cdc46670d2", "category_id": "586f6d3b3bfefcbe1ce643e8", "locale": "en", "name": "AKORNA", "slug": "akorna", "dimension": "w. 100 cm / d. 45 cm / h. 58 cm", "material": "Wood - Recycled Oak", "featured_image": "akorna-1.jpg" },
+  { "_id": "5870f5b9137500cdc46670e9", "category_id": "5870f485137500cdc46670dd", "locale": "sr", "name": "KLEMENZA TV sto", "slug": "klemenza-tv-table", "dimension": "35 x 45h", "material": "Drvo - jasen ili hrast, Metal - rebrasta armatura", "featured_image": "klemenza-1.jpg" },
+  { "_id": "5870f5be137500cdc46670ea", "category_id": "5870f48a137500cdc46670de", "locale": "sr", "name": "AKORNA", "slug": "akorna", "dimension": "š. 100 cm / d. 45 cm / v. 58 cm", "material": "Drvo - reciklirani hrast", "featured_image": "akorna-1.jpg" }
 ]

@@ -40,12 +40,12 @@
             </script>
           </div>
           <div class="col-sm-4">
-            <h4>OUR HQ IS LOCATED AT</h4>
-            <div>BEKERELOVA (old name RADE KONDIĆA) 24<br/>11050 MALI MOKRI LUG BELGRADE<br/>SERBIA</div>
-            <h4>CALL US</h4>
+            <h4><%= __('OUR HQ IS LOCATED AT') %></h4>
+            <div><%- __('contact.address') -%></div>
+            <h4><%= __('CALL US') %></h4>
             <div><a href="tel:381-64-2435333">+381 64 243 5333</a><br/><a href="tel:381-60-0509944">+381 60 050 9944</a></div>
-            <h4>BUSINESS HOURS</h4>
-            <div>9am - 5pm CET from Monday to Friday</div>
+            <h4><%= __('BUSINESS HOURS') %></h4>
+            <div><%= __('contact.business_hours') %></div>
           </div>
         </div>
       </div>
@@ -53,31 +53,31 @@
     <hr/>
     <div class="row" id="contact-form-row">
       <div class="col-md-5">
-        <h3>SEND US A MESSAGE</h3>
+        <h3><%= __('SEND US A MESSAGE') %></h3>
         <form action="/contact/send" method="post">
           <div class="form-group">
-            <label for="name">NAME</label>
+            <label for="name"><%= __('NAME') %></label>
             <input type="text" name="name" class="form-control form-control-border-1" id="name">
           </div>
           <div class="form-group">
-            <label for="email">EMAIL</label>
+            <label for="email"><%= __('EMAIL') %></label>
             <input type="email" name="email" class="form-control form-control-border-2" id="email">
           </div>
           <div class="form-group">
-            <label for="subject">SUBJECT</label>
+            <label for="subject"><%= __('SUBJECT') %></label>
             <input type="text" name="subject" class="form-control form-control-border-3" id="subject">
           </div>
           <div class="form-group">
-            <label for="message">MESSAGE</label>
+            <label for="message"><%= __('MESSAGE') %></label>
             <textarea name="message" class="form-control form-control-border-4" rows="4" id="message"></textarea>
           </div>
-          <button type="submit" class="btn btn-submit">SEND</button>
+          <button type="submit" class="btn btn-submit"><%= __('SEND') %></button>
         </form>
       </div>
     </div>
     <div class="row hide" id="contact-form-success-row">
       <div class="col-md-12">
-        <h3>Thank you for getting in touch! We will contact you within one business day.</h3>
+        <h3><%= __('contact.thank_you') %></h3>
       </div>
     </div>
   </div>

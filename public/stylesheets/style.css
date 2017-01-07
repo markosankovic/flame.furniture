@@ -153,6 +153,16 @@ textarea.form-control {
   filter: brightness(50%);
 }
 
+#locales {
+  font-size: .72em;
+  letter-spacing: .1em;
+  margin-top: 15px;
+}
+
+#locales a {
+  cursor: pointer;
+}
+
 
 /**
 * Nav
