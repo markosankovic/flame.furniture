@@ -15,5 +15,11 @@
 	"SUBJECT": "SUBJECT",
 	"MESSAGE": "MESSAGE",
 	"SEND": "SEND",
-	"contact.thank_you": "Thank you for getting in touch! We will contact you within one business day."
+	"contact.thank_you": "Thank you for getting in touch! We will contact you within one business day.",
+	"Dimension": "Dimension",
+	"Material": "Material",
+	"SHARE THIS PRODUCT": "SHARE THIS PRODUCT",
+	"I WANT TO BUY THIS PRODUCT": "I WANT TO BUY THIS PRODUCT",
+	"OUR INSTAGRAM FEED": "OUR INSTAGRAM FEED",
+	"product.share": "Take a look at FLAME Furniture Inc. %s product"
 }

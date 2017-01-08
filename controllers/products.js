@@ -8,6 +8,7 @@ const mongo = require('../mongo');
 router.get('/:slug?', (req, res) => {
   co(function* () {
     const locale = req.getLocale();
+    const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 
     let categories = yield mongo.db.collection('categories').find({ parent_id: { $exists: false }, locale: locale }).toArray();
     for (let category of categories) {
@@ -18,7 +19,7 @@ router.get('/:slug?', (req, res) => {
       let product = yield mongo.db.collection('products').findOne({ slug: req.params.slug, locale: locale });
       if (product) {
         product.category = yield mongo.db.collection('categories').findOne({ _id: product.category_id });
-        res.render('products/product', { title: `${product.name} - FLAME Furniture Inc.`, categories: categories, product: product });
+        res.render('products/product', { title: `${product.name} - FLAME Furniture Inc.`, categories: categories, product: product, fullUrl: fullUrl });
       } else {
         let category = yield mongo.db.collection('categories').findOne({ slug: req.params.slug, locale: locale });
         let products = mongo.db.collection('products').find();
@@ -33,14 +34,14 @@ router.get('/:slug?', (req, res) => {
         for (let product of products) {
           product.category = yield mongo.db.collection('categories').findOne({ _id: product.category_id });
         }
-        res.render('products/index', { title: `${category.name} - FLAME Furniture Inc.`, categories: categories, category: category, products: products });
+        res.render('products/index', { title: `${category.name} - FLAME Furniture Inc.`, categories: categories, category: category, products: products, fullUrl: fullUrl });
       }
     } else {
       let products = yield mongo.db.collection('products').find({ locale: locale }).toArray();
       for (let product of products) {
         product.category = yield mongo.db.collection('categories').findOne({ _id: product.category_id });
       }
-      res.render('products/index', { title: 'Products - FLAME Furniture Inc.', categories: categories, products: products });
+      res.render('products/index', { title: 'Products - FLAME Furniture Inc.', categories: categories, products: products, fullUrl: fullUrl });
     }
   });
 });

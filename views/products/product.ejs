@@ -1,12 +1,66 @@
-<%- include('_categories-list', { categories: categories }) %>
-<% if (locals.category) { %>
-  <%- include('_category-title', { category: category }) %>
-<% } %>
-
-<div><img src="/images/products/<%= product.featured_image %>" width="120" height="80" /></div>
-<div>
-  <%= product.name %><br/>
-  <%= product.category.name %><br/>
-  <%= product.dimension %><br/>
-  <%= product.material %>
+<div class="row" id="products-product-page">
+  <div class="col-md-12">
+    <%- include('_categories-list', { categories: categories }) %>
+    <% if (locals.category) { %>
+      <%- include('_category-title', { category: category }) %>
+    <% } %>
+    <div class="row">
+      <div class="col-sm-7">
+        <% if (product.gallery) { %>
+          <div id="carousel-product-gallery" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+              <% for (let i = 0; i < product.gallery.length; i++) { %>
+                <div class="item <% if (i === 0) { %>active<% } %>">
+                  <img class="d-block img-fluid" src="/images/products/gallery/<%= product.gallery[i] %>">
+                </div>
+              <% } %>
+            </div>
+          </div>
+        <% } %>
+      </div>
+      <div class="col-sm-5 product-info">
+        <h2 class="product-name">
+          <%= product.name %>
+        </h2>
+        <div class="product-category-name">
+          <a href="/products/<%= product.category.slug %>"><%= product.category.name %></a>
+        </div>
+        <div>
+          <%= __('Dimension') %>:
+        </div>
+        <div class="product-dimension">
+          <%= product.dimension %>
+        </div>
+        <div>
+          <%= __('Material') %>:
+        </div>
+        <div class="product-material">
+          <%= product.material %>
+        </div>
+        <div style="width: 40%;">
+          <hr class="hr-solid">
+        </div>
+        <div class="text-right">
+          <button class="btn btn-flame"><%= __('I WANT TO BUY THIS PRODUCT') %></button>
+        </div>
+        <hr class="hr-solid"/>
+        <div><%= __('SHARE THIS PRODUCT') %>:</div>
+        <div class="share-product">
+          <a href="http://www.facebook.com/share.php?u=<%= fullUrl %>&title=<%= __('product.share', product.name) %>"><img src="/images/share-facebook.png" title="Facebook: <%= __('product.share', product.name) %>"></a>
+          <a href="http://twitter.com/intent/tweet?status=<%= __('product.share', product.name) %>+<%= fullUrl %>"><img src="/images/share-twitter.png" title="Twitter: <%= __('product.share', product.name) %>"></a>
+          <a href="http://pinterest.com/pin/create/bookmarklet/?media=furniture&url=<%= fullUrl %>&is_video=false&description=<%= __('product.share', product.name) %>"><img src="/images/share-pinterest.png" title="Pinterest: <%= __('product.share', product.name) %>"></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script type="text/javascript">
+  $(document).bind('keyup', function(e) {
+    if (e.which == 39) {
+      $('.carousel').carousel('next');
+    } else if (e.which == 37) {
+      $('.carousel').carousel('prev');
+    }
+  });
+</script>

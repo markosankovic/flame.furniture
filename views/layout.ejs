@@ -12,6 +12,8 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
   <link rel='stylesheet' href='/stylesheets/style.css' />
 
   <script src="https://use.fontawesome.com/ad98d6239d.js"></script>
@@ -39,12 +41,12 @@
   <div class="container">
 
     <div class="row" id="header">
-      <div class="col-md-6">
+      <div class="col-sm-6">
         <a href="/">
-          <img src="/images/logo.png" id="logo" />
+          <img src="/images/logo.png" id="logo" class="img-fluid" />
         </a>
       </div>
-      <div class="col-md-6 text-right">
+      <div class="col-sm-6 text-right">
         <div id="locales">
           <a class="locale" data-locale="sr">SRP</a> / <a class="locale" data-locale="en">ENG</a>
         </div>
@@ -55,21 +57,31 @@
       <div class="col-sm-12">
         <div class="row">
           <div class="col-sm-2 text-center">
-            <a href="/"><%= __('HOME') %></a>
+            <a href="/">
+              <%= __('HOME') %>
+            </a>
           </div>
           <div class="col-sm-10">
             <div class="row">
               <div class="col-sm-3 text-center">
-                <a href="/about"><%= __('ABOUT US') %></a>
+                <a href="/about">
+                  <%= __('ABOUT US') %>
+                </a>
               </div>
               <div class="col-sm-3 text-center">
-                <a href="/products"><%= __('PRODUCTS') %></a>
+                <a href="/products">
+                  <%= __('PRODUCTS') %>
+                </a>
               </div>
               <div class="col-sm-3 text-center">
-                <a href="/gallery"><%= __('GALLERY') %></a>
+                <a href="/gallery">
+                  <%= __('GALLERY') %>
+                </a>
               </div>
               <div class="col-sm-3 text-center">
-                <a href="/contact"><%= __('CONTACT') %></a>
+                <a href="/contact">
+                  <%= __('CONTACT') %>
+                </a>
               </div>
             </div>
           </div>
@@ -81,6 +93,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="/javascripts/freewall.js"></script>
+    <script src="/javascripts/masonry.pkgd.min.js"></script>
 
     <div class="row" id="body">
       <div class="col-md-12">
@@ -93,11 +106,31 @@
         <div class="row">
           <div class="col-xs-5 col-md-3 col-links">
             <ul>
-              <li><a href="/"><%= __('HOME') %></a></li>
-              <li><a href="/about"><%= __('ABOUT US') %></a></li>
-              <li><a href="/products"><%= __('PRODUCTS') %></a></li>
-              <li><a href="/gallery"><%= __('GALLERY') %></a></li>
-              <li><a href="/contact"><%= __('CONTACT') %></a></li>
+              <li>
+                <a href="/">
+                  <%= __('HOME') %>
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  <%= __('ABOUT US') %>
+                </a>
+              </li>
+              <li>
+                <a href="/products">
+                  <%= __('PRODUCTS') %>
+                </a>
+              </li>
+              <li>
+                <a href="/gallery">
+                  <%= __('GALLERY') %>
+                </a>
+              </li>
+              <li>
+                <a href="/contact">
+                  <%= __('CONTACT') %>
+                </a>
+              </li>
             </ul>
           </div>
           <div class="col-md-5 hidden-sm hidden-xs col-empty">
@@ -115,7 +148,7 @@
         </div>
         <div class="row">
           <div class="col-md-12 col-copy text-center">
-            &copy; 2016 <a href="/">FLAME FURNITURE INC.</a>, built by <a href="http://zeroeleven.rs">ZEROELEVEN</a>
+            &copy; 2016 <a href="/">FLAME FURNITURE INC.</a>, built by <a href="http://malinered.com">LITTLE MESS</a>
           </div>
         </div>
       </div>
@@ -123,11 +156,11 @@
   </div>
 
   <script type="text/javascript">
-    $('.locale').click(function (e) {
+    $('.locale').click(function(e) {
       e.preventDefault();
       var locale = $(e.currentTarget).data('locale');
       var date = new Date();
-      date.setTime(date.getTime() + (7*24*60*60*1000));
+      date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000));
       document.cookie = "locale=" + locale + "; expires=" + date.toUTCString() + "; path=/";
       location.reload();
       return false;
@@ -137,6 +170,20 @@
   <script type="text/javascript">
     $(function() {
       $('[data-toggle="tooltip"]').tooltip()
+    });
+  </script>
+
+  <script type="text/javascript">
+    $.fn.extend({
+      animateCss: function(animationName, callback) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        this.addClass('animated ' + animationName).one(animationEnd, function() {
+          $(this).removeClass('animated ' + animationName);
+          if (callback) {
+            callback(this);
+          }
+        });
+      }
     });
   </script>
 
