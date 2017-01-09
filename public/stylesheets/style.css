@@ -647,6 +647,11 @@ a:focus {
 * Products page
 */
 
+.row-categories {
+  position: relative;
+  top: -20px;
+}
+
 nav.categories {
   margin-bottom: 20px;
 }
@@ -660,8 +665,6 @@ nav.categories ul {
 
 nav.categories>ul {
   font-size: .72em;
-  margin-top: -10px;
-  padding-bottom: 10px;
   border-image: url("../images/categories-border.png") 3 3 3 3 fill repeat;
   border-bottom: 3px solid #414141;
 }
@@ -676,13 +679,25 @@ nav.categories ul li {
   white-space: nowrap;
 }
 
+nav.categories a {
+  display: inline-block;
+}
+
+nav.categories > ul > li > a {
+  padding: 10px 0;
+}
+
+nav.categories > ul > li > ul > li > a{
+  padding: 5px 0;
+}
+
 
 /* hide dropdowns by default */
 
 nav.categories ul ul {
   display: none;
   position: absolute;
-  top: 15px;
+  top: 30px;
   left: 0;
   background-color: #f2f2f2;
   border: 2px solid #414141;
