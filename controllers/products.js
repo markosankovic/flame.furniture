@@ -26,7 +26,7 @@ router.get('/:slug?', (req, res) => {
         res.render('products/product', { title: `${product.name} - FLAME Furniture Inc.`, categories: categories, product: product, fullUrl: fullUrl });
       } else {
         let category = yield mongo.db.collection('categories').findOne({ slug: req.params.slug });
-        let products = mongo.db.collection('products').find();
+        let products = mongo.db.collection('products').find().sort({name: 1});
         if (category.parent_id) {
           category.parent = yield mongo.db.collection('categories').findOne({ _id: category.parent_id });
           products = yield products.filter({ category_id: category._id }).toArray();
@@ -43,7 +43,7 @@ router.get('/:slug?', (req, res) => {
         res.render('products/index', { title: `${category.name} - FLAME Furniture Inc.`, categories: categories, category: category, products: products, fullUrl: fullUrl });
       }
     } else {
-      let products = yield mongo.db.collection('products').find().toArray();
+      let products = yield mongo.db.collection('products').find().sort({name: 1}).toArray();
       for (let product of products) {
         product.category = yield mongo.db.collection('categories').findOne({ _id: product.category_id });
         const dimensions = sizeOf(`${__dirname}/../public/images/products/featured/${product.slug}.jpg`);

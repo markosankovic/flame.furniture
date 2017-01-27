@@ -1,36 +1,38 @@
 <div class="grid">
   <% for (let product of products) { %>
-    <div class="grid-item product-item layout-<%= product.slug %>">
-      <div class="product-featured-image" style="background-image: url(/images/products/featured/<%= product.slug %>.jpg);">
-        <div class="product-info text-center">
-          <h3 class="product-name">
-            <%- link_to(product.name, `/products/${product.slug}`) %>
-          </h3>
-          <div class="product-category-name">
-            <%- link_to(__(`category.${product.category.name}`), `/products/${product.category.slug}`) %>
-          </div>
-          <% if (product.dimension) { %>
-            <div class="product-dimension">
-              <%= productDimension(product.dimension, __) %>
-            </div>
-          <% } %>
-          <% if (product.material) { %>
-            <div class="product-material">
-              <%= productMaterial(product.material, __) %>
-            </div>
-          <% } %>
+    <div class="grid-item product-item layout-<%= product.featured_image_layout %>">
+      <img src="/images/products/featured/<%= product.slug %>.jpg" />
+      <div class="product-info text-center">
+        <h3 class="product-name">
+          <%- link_to(product.name, `/products/${product.slug}`) %>
+        </h3>
+        <div class="product-category-name">
+          <%- link_to(__(`category.${product.category.name}`), `/products/${product.category.slug}`) %>
         </div>
+        <% if (product.dimension) { %>
+          <div class="product-dimension">
+            <%= productDimension(product.dimension, __) %>
+          </div>
+        <% } %>
+        <% if (product.material) { %>
+          <div class="product-material">
+            <%= productMaterial(product.material, __) %>
+          </div>
+          <% } %>
       </div>
     </div>
     <% } %>
 </div>
 
 <script type="text/javascript">
-  $('.grid').masonry({
+  $grid = $('.grid').masonry({
     // set itemSelector so .grid-sizer is not used in layout
     itemSelector: '.grid-item',
     // use element for option
     percentPosition: true
+  });
+  $grid.imagesLoaded().progress( function() {
+    $grid.masonry('layout');
   });
 </script>
 
@@ -39,12 +41,12 @@
     $('.product-item').on('mouseenter', function(e) {
       var $target = $('.product-info', e.currentTarget);
       $($target).css('visibility', 'visible');
-      $($target).animateCss('zoomIn');
+      $($target).animateCss('fadeInUp');
     });
 
     $('.product-item').on('mouseleave', function(e) {
       var $target = $('.product-info', e.currentTarget);
-      $($target).animateCss('zoomOut', function() {
+      $($target).animateCss('fadeOut', function() {
         $($target).css('visibility', 'hidden');
       });
     });
