@@ -35,4 +35,4 @@ env.list
 db
 
  # Shared
- public/images/products
+/public/images/products
