@@ -5,11 +5,15 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
+const expressHelpers = require('express-helpers');
 const mongo = require('./mongo');
 
 require('dotenv').config(); // load environment variables from a .env file into process.env
 
 const app = express();
+
+// helpers
+expressHelpers(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -32,7 +36,18 @@ i18n.configure({
 });
 
 // i18n init parses req for language headers, cookies, etc.
-app.use(i18n.init);
+app.use((req, res, next) => {
+  i18n.init(req, res, next);
+});
+
+// app.locals
+app.locals.productDimension = function (dimension, __) {
+  return Object.keys(dimension).map((key) => `${__('product.dimension.' + key)}: ${dimension[key]} cm`).join(', ');
+};
+
+app.locals.productMaterial = function (material, __) {
+  return material.map(val => __('product.material.' + val)).join(', ');
+};
 
 // connect to mongodb
 mongo.connect('mongodb://mongo:27017/ff');

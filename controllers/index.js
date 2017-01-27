@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mailer = require('nodemailer');
 
-const debug = require('debug')('flame.furniture:server');
+const debug = require('debug')('ff:server');
 
 router.use('/products', require('./products'));
 

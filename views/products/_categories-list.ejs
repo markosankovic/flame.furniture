@@ -4,12 +4,12 @@
       <ul>
         <% for (let category of categories) { %>
           <li>
-            <a href="/products/<%= category.slug %>"><%= category.name %></a>
+            <%- link_to(__(`category.${category.name}`), `/products/${category.slug}`) %>
             <% if (category.subcategories && category.subcategories.length > 0) { %>
               <ul class="text-left">
                 <% for (let subcategory of category.subcategories) { %>              
                   <li>
-                    <a href="/products/<%= subcategory.slug %>"><%= subcategory.name %></a>
+                    <%- link_to(__(`category.${subcategory.name}`), `/products/${subcategory.slug}`) %>                  
                   </li>
                 <% } %>
               </ul>

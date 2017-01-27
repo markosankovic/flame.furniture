@@ -2,6 +2,8 @@ version: '2'
 services:
   app:
     build: .
+    environment:
+    - DEBUG=ff:*
     links:
     - mongo
   mongo-seed:

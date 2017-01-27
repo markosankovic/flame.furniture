@@ -7,11 +7,11 @@ install dependencies:
 
 run the app:
 
-    $ DEBUG=flame.furniture:* npm start
+    $ DEBUG=ff:* npm start
 
 run the develop app:
 
-    $ DEBUG=flame.furniture:* NODEMAILER_TRANSPORTER=smtps://flamefurniture%40gmail.com:password@smtp.gmail.com MAIL_TO=foo@bar.com nodemon
+    $ DEBUG=ff:* NODEMAILER_TRANSPORTER=smtps://flamefurniture%40gmail.com:password@smtp.gmail.com MAIL_TO=foo@bar.com nodemon
 
 contact send test:
 

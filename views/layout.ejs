@@ -57,31 +57,21 @@
       <div class="col-sm-12">
         <div class="row">
           <div class="col-sm-2 text-center">
-            <a href="/">
-              <%= __('HOME') %>
-            </a>
+            <%- link_to(__('HOME'), '/') %>
           </div>
           <div class="col-sm-10">
             <div class="row">
               <div class="col-sm-3 text-center">
-                <a href="/about">
-                  <%= __('ABOUT US') %>
-                </a>
+                <%- link_to(__('ABOUT US'), '/about') %>
               </div>
               <div class="col-sm-3 text-center">
-                <a href="/products">
-                  <%= __('PRODUCTS') %>
-                </a>
+                <%- link_to(__('PRODUCTS'), '/products') %>
               </div>
               <div class="col-sm-3 text-center">
-                <a href="/gallery">
-                  <%= __('GALLERY') %>
-                </a>
+                <%- link_to(__('GALLERY'), '/gallery') %>
               </div>
               <div class="col-sm-3 text-center">
-                <a href="/contact">
-                  <%= __('CONTACT') %>
-                </a>
+                <%- link_to(__('CONTACT'), '/contact') %>
               </div>
             </div>
           </div>
@@ -106,31 +96,11 @@
         <div class="row">
           <div class="col-xs-5 col-md-3 col-links">
             <ul>
-              <li>
-                <a href="/">
-                  <%= __('HOME') %>
-                </a>
-              </li>
-              <li>
-                <a href="/about">
-                  <%= __('ABOUT US') %>
-                </a>
-              </li>
-              <li>
-                <a href="/products">
-                  <%= __('PRODUCTS') %>
-                </a>
-              </li>
-              <li>
-                <a href="/gallery">
-                  <%= __('GALLERY') %>
-                </a>
-              </li>
-              <li>
-                <a href="/contact">
-                  <%= __('CONTACT') %>
-                </a>
-              </li>
+              <li><%- link_to(__('HOME'), '/') %></li>              
+              <li><%- link_to(__('ABOUT US'), '/about') %></li>
+              <li><%- link_to(__('PRODUCTS'), '/products') %></li>
+              <li><%- link_to(__('GALLERY'), '/gallery') %></li>
+              <li><%- link_to(__('CONTACT'), '/contact') %></li>
             </ul>
           </div>
           <div class="col-md-5 hidden-sm hidden-xs col-empty">
@@ -141,8 +111,12 @@
               <%= __('CALL US') %>: <a href="tel:381-64-2435333">+381 64 243 5333</a>
             </div>
             <div class="text-center">
-              <a href="https://www.facebook.com/flame.furniture" data-toggle="tooltip" data-placement="bottom" title="Visit our Facebook page"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
-              <a href="https://www.instagram.com/flame.furniture" data-toggle="tooltip" data-placement="bottom" title="Visit our Instagram page"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+              <a href="https://www.facebook.com/flame.furniture"><img src="/images/social-facebook.png"/></a>
+              <!--
+              <a href="#" data-toggle="tooltip"><img src="/images/social-twitter.png"/></a>
+              <a href="#" data-toggle="tooltip"><img src="/images/social-pinterest.png"/></a>
+              -->
+              <a href="https://www.instagram.com/flame.furniture"><img src="/images/social-instagram.png"/></a>
             </div>
           </div>
         </div>

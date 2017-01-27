@@ -11,16 +11,16 @@ describe('categories', function () {
 
   it('should find category by slug', function (done) {
     co(function* () {
-      let category = yield mongo.db.collection('categories').findOne({ slug: 'dining-tables', locale: 'en' });
+      let category = yield mongo.db.collection('categories').findOne({ slug: 'dining-tables' });
       expect(category._id).to.equal('586e5350ac8b94a3c6d6285d');
       expect(category.name).to.equal('Dining Tables');
       done();
     }).catch(console.log);
   });
 
-  it('should find all categories having no parent and en as locale', function (done) {
+  it('should find all categories having no parent', function (done) {
     co(function* () {
-      let categories = yield mongo.db.collection('categories').find({ parent_id: { $exists: false }, locale: 'en' }).toArray();
+      let categories = yield mongo.db.collection('categories').find({ parent_id: { $exists: false } }).toArray();
       expect(categories).to.have.lengthOf(7);
       done();
     }).catch(console.log);
@@ -35,9 +35,9 @@ describe('categories', function () {
     }).catch(console.log);
   });
 
-  it('should find and group categories and subcategories for en locale', function (done) {
+  it('should find and group categories and subcategories', function (done) {
     co(function* () {
-      let categories = yield mongo.db.collection('categories').find({ parent_id: { $exists: false }, locale: 'en' }).toArray();
+      let categories = yield mongo.db.collection('categories').find({ parent_id: { $exists: false } }).toArray();
       for (let category of categories) {
         category.subcategories = yield mongo.db.collection('categories').find({ parent_id: category._id }).toArray();
       }

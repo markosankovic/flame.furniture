@@ -564,7 +564,7 @@ a:focus {
   border-radius: 3px;
   border-top-color: #4f4f4f;
   border-image: url("../images/footer-border.png") 2 2 2 2 fill repeat;
-  padding-top: 2px;
+  padding-top: 3px;
 }
 
 #footer .fa {
@@ -683,11 +683,11 @@ nav.categories a {
   display: inline-block;
 }
 
-nav.categories > ul > li > a {
+nav.categories>ul>li>a {
   padding: 10px 0;
 }
 
-nav.categories > ul > li > ul > li > a{
+nav.categories>ul>li>ul>li>a {
   padding: 5px 0;
 }
 
@@ -695,10 +695,10 @@ nav.categories > ul > li > ul > li > a{
 /* hide dropdowns by default */
 
 nav.categories ul ul {
-  display: none;
+  visibility: hidden;
   position: absolute;
-  top: 30px;
-  left: 0;
+  top: 15px;
+  left: -9999px;
   background-color: #f2f2f2;
   border: 2px solid #414141;
   border-style: solid;
@@ -711,13 +711,22 @@ nav.categories ul ul {
   -webkit-box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  -webkit-transition: opacity 150ms ease, top 150ms ease;
+  -moz-transition: opacity 150ms ease, top 150ms ease;
+  -o-transition: opacity 150ms ease, top 150ms ease;
+  transition: opacity 150ms ease, top 150ms ease;
 }
 
 
 /* display dropdowns on hover */
 
 nav.categories ul li:hover>ul {
+  top: 30px;
+  left: 0;
   display: inherit;
+  visibility: visible;
+  opacity: 1;
 }
 
 
@@ -816,6 +825,34 @@ nav.categories ul ul li {
   min-height: 412.5px;
 }
 
-#carousel-product-gallery img {
+#carousel-product-gallery img.img-standard {
   width: 100%;
+}
+
+#product-gallery-thumbnails {
+  display: flex;
+}
+
+#product-gallery-thumbnails>div {
+  position: relative;
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 10px 10px 0 0;
+}
+
+#product-gallery-thumbnails>div:last-child {
+  padding-right: 0;
+}
+
+#product-gallery-thumbnails img {
+  width: 100%;
+  cursor: pointer;
+  -webkit-user-drag: none;
+  transition: -webkit-filter 150ms, filter 150ms;
+  transition-timing-function: ease-in;
+}
+
+#product-gallery-thumbnails img:hover {
+  -webkit-filter: brightness(50%);
+  filter: brightness(50%);
 }

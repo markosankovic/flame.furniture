@@ -1,24 +1,24 @@
 <div class="grid">
   <% for (let product of products) { %>
-    <div class="grid-item product-item layout-<%= product.featured_image_layout %>">
-      <div class="product-featured-image" style="background-image: url(/images/products/featured/<%= product.featured_image %>);">
+    <div class="grid-item product-item layout-<%= product.slug %>">
+      <div class="product-featured-image" style="background-image: url(/images/products/featured/<%= product.slug %>.jpg);">
         <div class="product-info text-center">
           <h3 class="product-name">
-            <a href="/products/<%= product.slug %>">
-              <%= product.name %>
-            </a>
+            <%- link_to(product.name, `/products/${product.slug}`) %>
           </h3>
           <div class="product-category-name">
-            <a href="/products/<%= product.category.slug %>">
-              <%= product.category.name %>
-            </a>
+            <%- link_to(__(`category.${product.category.name}`), `/products/${product.category.slug}`) %>
           </div>
-          <div class="product-dimension">
-            <%= product.dimension %>
-          </div>
-          <div class="product-material">
-            <%= product.material %>
-          </div>
+          <% if (product.dimension) { %>
+            <div class="product-dimension">
+              <%= productDimension(product.dimension, __) %>
+            </div>
+          <% } %>
+          <% if (product.material) { %>
+            <div class="product-material">
+              <%= productMaterial(product.material, __) %>
+            </div>
+          <% } %>
         </div>
       </div>
     </div>

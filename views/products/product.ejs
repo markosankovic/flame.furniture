@@ -6,15 +6,22 @@
     <% } %>
     <div class="row">
       <div class="col-sm-7">
-        <% if (product.gallery) { %>
-          <div id="carousel-product-gallery" class="carousel slide" data-ride="carousel">
+        <% if (product.gallery_count) { %>
+          <div id="carousel-product-gallery" class="carousel slide" data-ride="carousel" data-interval="false">
             <div class="carousel-inner" role="listbox">
-              <% for (let i = 0; i < product.gallery.length; i++) { %>
+              <% for (let i = 0; i < product.gallery_count; i++) { %>
                 <div class="item <% if (i === 0) { %>active<% } %>">
-                  <img class="d-block img-fluid" src="/images/products/gallery/<%= product.gallery[i] %>">
+                  <img class="d-block img-fluid img-standard" src="/images/products/gallery/<%= product.slug %>/<%= i %>.jpg">
                 </div>
               <% } %>
             </div>
+          </div>
+          <div id="product-gallery-thumbnails">
+            <% for (let i = 0; i < product.gallery_count; i++) { %>
+              <div>
+                <img class="img-fluid" src="/images/products/gallery/<%= product.slug %>/<%= i %>-thumbnail.jpg" data-index="<%= i %>" />
+              </div>
+            <% } %>
           </div>
         <% } %>
       </div>
@@ -23,20 +30,24 @@
           <%= product.name %>
         </h2>
         <div class="product-category-name">
-          <a href="/products/<%= product.category.slug %>"><%= product.category.name %></a>
+          <%- link_to(__(`category.${product.category.name}`), `/products/${product.category.slug}`) %>
         </div>
-        <div>
-          <%= __('Dimension') %>:
-        </div>
-        <div class="product-dimension">
-          <%= product.dimension %>
-        </div>
-        <div>
-          <%= __('Material') %>:
-        </div>
-        <div class="product-material">
-          <%= product.material %>
-        </div>
+        <% if (product.dimension) { %>
+          <div>
+            <%= __('Dimension') %>:
+          </div>
+          <div class="product-dimension">
+            <%= productDimension(product.dimension, __) %>
+          </div>
+        <% } %>
+        <% if (product.material) { %>
+          <div>
+            <%= __('Material') %>:
+          </div>
+          <div class="product-material">
+            <%= productMaterial(product.material, __) %>
+          </div>
+        <% } %>
         <div style="width: 40%;">
           <hr class="hr-solid">
         </div>
@@ -63,4 +74,9 @@
       $('.carousel').carousel('prev');
     }
   });
+
+  $('#product-gallery-thumbnails img').click(function(e) {
+    $('.carousel').carousel($(e.currentTarget).data('index'));
+  })
+
 </script>

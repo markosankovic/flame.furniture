@@ -33,3 +33,6 @@ env.list
 
 # Database
 db
+
+ # Shared
+ public/images/products
