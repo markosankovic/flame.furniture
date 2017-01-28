@@ -20,7 +20,7 @@
             <div id="product-gallery-thumbnails">
               <% for (let i = 0; i < product.gallery_count; i++) { %>
                 <div>
-                  <img class="img-fluid" src="/images/products/gallery/<%= product.slug %>/<%= i %>-thumbnail.jpg" data-index="<%= i %>" />
+                  <img class="img-fluid<%= i === 0 ? ' active' : ''%>" src="/images/products/gallery/<%= product.slug %>/<%= i %>-thumbnail.jpg" data-index="<%= i %>" />
                 </div>
               <% } %>
             </div>
@@ -79,6 +79,8 @@
 
   $('#product-gallery-thumbnails img').click(function(e) {
     $('.carousel').carousel($(e.currentTarget).data('index'));
-  })
+    $('#product-gallery-thumbnails img').removeClass('active');
+    $(e.currentTarget).addClass('active');
+  });
 
 </script>
