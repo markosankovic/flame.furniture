@@ -22,7 +22,7 @@ router.get('/:slug?', (req, res) => {
       if (product) {
         product.category = yield mongo.db.collection('categories').findOne({ _id: product.category_id });
         const filenames = fs.readdirSync(`${__dirname}/../public/images/products/gallery/${product.slug}/`);
-        product.gallery_count = filenames.length / 2;
+        product.gallery_count = filenames.filter(filename => filename.endsWith('jpg')).length / 2;
         res.render('products/product', { title: `${product.name} - FLAME Furniture Inc.`, categories: categories, product: product, fullUrl: fullUrl });
       } else {
         let category = yield mongo.db.collection('categories').findOne({ slug: req.params.slug });

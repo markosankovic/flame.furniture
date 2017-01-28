@@ -16,13 +16,15 @@
               <% } %>
             </div>
           </div>
-          <div id="product-gallery-thumbnails">
-            <% for (let i = 0; i < product.gallery_count; i++) { %>
-              <div>
-                <img class="img-fluid" src="/images/products/gallery/<%= product.slug %>/<%= i %>-thumbnail.jpg" data-index="<%= i %>" />
-              </div>
-            <% } %>
-          </div>
+          <% if (product.gallery_count > 1) { %>
+            <div id="product-gallery-thumbnails">
+              <% for (let i = 0; i < product.gallery_count; i++) { %>
+                <div>
+                  <img class="img-fluid" src="/images/products/gallery/<%= product.slug %>/<%= i %>-thumbnail.jpg" data-index="<%= i %>" />
+                </div>
+              <% } %>
+            </div>
+          <% } %>
         <% } %>
       </div>
       <div class="col-sm-5 product-info">

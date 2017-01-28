@@ -864,11 +864,4 @@ nav.categories ul ul li {
   width: 100%;
   cursor: pointer;
   -webkit-user-drag: none;
-  transition: -webkit-filter 150ms, filter 150ms;
-  transition-timing-function: ease-in;
-}
-
-#product-gallery-thumbnails img:hover {
-  -webkit-filter: brightness(50%);
-  filter: brightness(50%);
 }
