@@ -32,17 +32,22 @@ router.post('/subscribe', (req, res) => {
 
 /* GET about page. */
 router.get('/about', (req, res) => {
-  res.render('about', { title: 'ABOUT - FLAME Furniture Inc.' });
+  res.render('about', { title: `${req.__('ABOUT US')} - FLAME Furniture Inc.` });
+});
+
+/* GET press page. */
+router.get('/press', (req, res) => {
+  res.render('press', { title: `${req.__('PRESS')} - FLAME Furniture Inc.` });
 });
 
 /* GET gallery page. */
 router.get('/gallery', (req, res) => {
-  res.render('gallery', { title: 'GALLERY - FLAME Furniture Inc.' });
+  res.render('gallery', { title: `${req.__('GALLERY')} - FLAME Furniture Inc.` });
 });
 
 /* GET home page. */
 router.get('/contact', (req, res) => {
-  res.render('contact', { title: 'CONTACT - FLAME Furniture Inc.' });
+  res.render('contact', { title: `${req.__('CONTACT')} - FLAME Furniture Inc.` });
 });
 
 /* POST contact send. */

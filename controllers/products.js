@@ -51,7 +51,7 @@ router.get('/:slug?', (req, res) => {
         const dimensions = sizeOf(`${__dirname}/../public/images/products/featured/${product.slug}.jpg`);
         product.featured_image_layout = dimensions.width > dimensions.height ? 'landscape' : 'portrait';
       }
-      res.render('products/index', { title: 'Products - FLAME Furniture Inc.', categories: categories, products: products, fullUrl: fullUrl });
+      res.render('products/index', { title: `${req.__('PRODUCTS')} - FLAME Furniture Inc.`, categories: categories, products: products, fullUrl: fullUrl });
     }
   });
 });
@@ -70,7 +70,7 @@ router.get('/:slug/buy', (req, res) => {
       let product = yield mongo.db.collection('products').findOne({ slug: req.params.slug });
       if (product) {
         product.category = yield mongo.db.collection('categories').findOne({ _id: product.category_id });
-        res.render('products/buy', { title: `Buy ${product.name} - FLAME Furniture Inc.`, categories: categories, product: product, fullUrl: fullUrl });
+        res.render('products/buy', { title: `${req.__('BUY')} ${product.name} - FLAME Furniture Inc.`, categories: categories, product: product, fullUrl: fullUrl });
       }
     }
   });
