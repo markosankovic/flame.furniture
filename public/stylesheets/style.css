@@ -211,6 +211,10 @@ textarea.form-control {
   cursor: pointer;
 }
 
+#locales a.active {
+  color: #4f4f4f;
+}
+
 
 /**
 * Nav

@@ -48,7 +48,7 @@
       </div>
       <div class="col-sm-6 text-right">
         <div id="locales">
-          <a class="locale" data-locale="sr">SRP</a> / <a class="locale" data-locale="en">ENG</a>
+          <a class="locale<%= getLocale() === 'sr' ? ' active' : '' %>" data-locale="sr">SRP</a> / <a class="locale<%= getLocale() === 'en' ? ' active' : '' %>" data-locale="en">ENG</a>
         </div>
       </div>
     </div>
