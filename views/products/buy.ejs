@@ -12,12 +12,12 @@
         </div>
         <img src="/images/products/featured/<%= product.slug %>.jpg" style="max-width: 100%;" />
       </div>
-      <div class="col-sm-7">
+      <div class="col-sm-7 inquiry-container">
         <div class="row form-row">
           <div class="col-sm-12">
             <h3><%= __('SEND US AN INQUIRY') %></h3>
             <p class="notice text-light"><%= __('products.buy.notice') %></p>
-            <form action="/products/buy/<%= product.slug %>/send" method="post">
+            <form action="/products/<%= product.slug %>/buy/send" method="post" name="inquiryForm">
               <div class="form-group">
                 <label for="name"><%= __('NAME') %></label>
                 <input type="text" name="name" class="form-control form-control-border-1" id="name" required>
@@ -34,7 +34,7 @@
             </form>
           </div>
         </div>
-        <div class="row hide">
+        <div class="row" style="display: none;">
           <div class="col-md-12">
             <h5 class="uppercase"><%= __('products.buy.thank_you') %></h5>
           </div>
@@ -45,17 +45,21 @@
 </div>
 
 <script type="text/javascript">
-  $('form').submit(function(event) {
-    event.preventDefault();
-    $('button[type=submit]').addClass('disabled');
-    $.post('/products/<%= product.slug %>/buy/send', $(this).serialize(), function(data, textStatus, jqXHR) {
-      $('button[type=submit]').removeClass('disabled');
-      if (jqXHR.status === 200) {
-        $('.form-row').slideUp(250);
-        $('.form-row + div').removeClass('hide').slideDown(250);
-      } else {
-        alert('Failed to send the email!');
-      }
-    }, 'json');
-  });
+  (function() {
+    var $form = $('form[name=inquiryForm]');
+    var $container = $('.inquiry-container');
+    $form.submit(function(event) {
+      event.preventDefault();
+      $('button[type=submit]', $form).addClass('disabled');
+      $.post('/products/<%= product.slug %>/buy/send', $(this).serialize())
+        .done(function() {
+          $('.form-row', $container).slideUp(250);
+          $('.form-row + div', $container).slideDown(450);
+        }).fail(function () {
+          alert(jqXHR.responseText);
+        }).always(function () {
+          $('button[type=submit]', $form).removeClass('disabled');
+        });
+    });
+  })();
 </script>

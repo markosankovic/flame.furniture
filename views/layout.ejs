@@ -108,8 +108,15 @@
             <div class="footer-col-empty-line-pattern"></div>
           </div>
           <div class="col-xs-7 col-md-4 col-newsletter">
-            <div class="text-center" style="margin-top:16px;">
-              <%= __('CALL US') %>: <a href="tel:381-64-2435333">+381 64 243 5333</a>
+            <div class="text-center">
+              <div class="receive-news"><%= __('RECEIVE NEWS AND SPECIAL OFFERS') %></div>
+              <div class="newsletter-form-container">
+                <p class="subscribe-thanks" style="display: none;"><%= __('layout.subscribe.thanks') %></p>
+                <form action="/subscribe" method="post" name="subscribeForm">
+                  <input type="email" name="email" placeholder="<%= __('YOUR EMAIL...') %>" required />
+                  <input type="submit" value="<%= __('CONFIRM') %>" />
+                </form>
+              </div>
             </div>
             <div class="text-center">
               <a href="https://www.facebook.com/flame.furniture"><img src="/images/social-facebook.png"/></a>
@@ -140,6 +147,25 @@
       location.reload();
       return false;
     });
+  </script>
+
+  <script type="text/javascript">
+    (function () {
+      var $form = $('form[name=subscribeForm]');
+      $form.submit(function(event) {
+        event.preventDefault();
+        $('input[type=submit]', $form).addClass('disabled');
+        $.post('/subscribe', $(this).serialize())
+          .done(function () {
+            $('.subscribe-thanks').slideDown(450);
+            $form.hide();
+          }).fail(function (jqXHR) {
+            alert(jqXHR.responseText);
+          }).always(function () {
+            $('input[type=submit]', $form).removeClass('disabled');
+          });
+      });
+    })();
   </script>
 
   <script type="text/javascript">

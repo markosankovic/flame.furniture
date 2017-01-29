@@ -85,6 +85,7 @@ p.notice {
   text-transform: uppercase;
 }
 
+
 /**
 * Form
 */
@@ -574,6 +575,47 @@ a:focus {
   padding-top: 3px;
 }
 
+#footer .col-newsletter {
+  font-weight: lighter;
+}
+
+#footer .col-newsletter .receive-news {
+  font-size: 0.8em;
+  margin-bottom: 4px;
+}
+
+#footer .col-newsletter input[type=email] {
+  border: 3px solid #e76647;
+  border-radius: 3px;
+  font-size: 0.9em;
+  color: #565656;
+  padding: 4px 12px;
+  width: 100%;
+}
+
+#footer .col-newsletter .newsletter-form-container {
+  position: relative;
+}
+
+#footer .col-newsletter input[type=submit] {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 0.7em;
+  padding: 0.3em 1em;
+  border: none;
+  background-color: #e76647;
+  color: white;
+  border-radius: 3px;
+  font-weight: lighter;
+  transition: opacity 150ms;
+  transition-timing-function: ease-in;
+}
+
+#footer .col-newsletter input[type=submit]:hover {
+  opacity: 0.8;
+}
+
 #footer .fa {
   transition: color 150ms;
   transition-timing-function: ease-in;
@@ -589,6 +631,10 @@ a:focus {
 
 #footer .fa-instagram {
   color: #000000;
+}
+
+#footer .subscribe-thanks {
+  margin-top: 9px;
 }
 
 
@@ -875,7 +921,8 @@ nav.categories ul ul li {
   transition: opacity 250ms;
   transition-timing-function: ease-in;
   -webkit-transform: translateZ(0);
-  width: calc(100% + .49px); /* https://css-tricks.com/forums/topic/css3-transition-opacity-causing-glitch-in-images/#post-203480 */
+  width: calc(100% + .49px);
+  /* https://css-tricks.com/forums/topic/css3-transition-opacity-causing-glitch-in-images/#post-203480 */
 }
 
 #product-gallery-thumbnails img.active {

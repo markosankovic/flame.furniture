@@ -51,50 +51,56 @@
       </div>
     </div>
     <hr class="hr-pattern" />
-    <div class="row form-row">
-      <div class="col-md-5">
-        <h3><%= __('SEND US A MESSAGE') %></h3>
-        <form action="/contact/send" method="post">
-          <div class="form-group">
-            <label for="name"><%= __('NAME') %></label>
-            <input type="text" name="name" class="form-control form-control-border-1" id="name" required>
-          </div>
-          <div class="form-group">
-            <label for="email"><%= __('EMAIL') %></label>
-            <input type="email" name="email" class="form-control form-control-border-2" id="email" required>
-          </div>
-          <div class="form-group">
-            <label for="subject"><%= __('SUBJECT') %></label>
-            <input type="text" name="subject" class="form-control form-control-border-3" id="subject" required>
-          </div>
-          <div class="form-group">
-            <label for="message"><%= __('MESSAGE') %></label>
-            <textarea name="message" class="form-control form-control-border-4" rows="4" id="message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-submit btn-flame"><%= __('SEND') %></button>
-        </form>
+    <div class="contact-container">
+      <div class="row form-row">
+        <div class="col-md-5">
+          <h3><%= __('SEND US A MESSAGE') %></h3>
+          <form action="/contact/send" method="post" name="contactForm">
+            <div class="form-group">
+              <label for="name"><%= __('NAME') %></label>
+              <input type="text" name="name" class="form-control form-control-border-1" id="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email"><%= __('EMAIL') %></label>
+              <input type="email" name="email" class="form-control form-control-border-2" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="subject"><%= __('SUBJECT') %></label>
+              <input type="text" name="subject" class="form-control form-control-border-3" id="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="message"><%= __('MESSAGE') %></label>
+              <textarea name="message" class="form-control form-control-border-4" rows="4" id="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-submit btn-flame"><%= __('SEND') %></button>
+          </form>
+        </div>
       </div>
-    </div>
-    <div class="row hide">
-      <div class="col-md-12">
-        <h5 class="uppercase"><%= __('contact.thank_you') %></h5>
+      <div class="row" style="display: none;">
+        <div class="col-md-12">
+          <h5 class="uppercase"><%= __('contact.thank_you') %></h5>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
-  $('form').submit(function(event) {
-    event.preventDefault();
-    $('button[type=submit]').addClass('disabled');
-    $.post('/contact/send', $(this).serialize(), function(data, textStatus, jqXHR) {
-      $('button[type=submit]').removeClass('disabled');
-      if (jqXHR.status === 200) {
-        $('.form-row').slideUp(250);
-        $('.form-row + div').removeClass('hide').slideDown(250);
-      } else {
-        alert('Failed to send the email!');
-      }
-    }, 'json');
-  });
+  (function() {
+    var $form = $('form[name=contactForm]');
+    var $container = $('.contact-container');
+    $form.submit(function(event) {
+      event.preventDefault();
+      $('button[type=submit]', $form).addClass('disabled');
+      $.post('/contact/send', $(this).serialize())
+        .done(function() {
+          $('.form-row', $container).slideUp(250);
+          $('.form-row + div', $container).slideDown(450);
+        }).fail(function () {
+          alert(jqXHR.responseText);
+        }).always(function () {
+          $('button[type=submit]', $form).removeClass('disabled');
+        });
+    });
+  })();
 </script>

@@ -4,6 +4,7 @@ const mailer = require('nodemailer');
 
 const debug = require('debug')('ff:server');
 
+const co = require('co');
 const mongo = require('../mongo');
 
 router.use('/products', require('./products'));
@@ -11,6 +12,22 @@ router.use('/products', require('./products'));
 /* GET home page. */
 router.get('/', (req, res) => {
   res.render('index', { title: 'FLAME Furniture Inc.' });
+});
+
+/* POST subscribe to newsletter and special offers. */
+router.post('/subscribe', (req, res) => {
+  co(function* () {
+    let subscriber = yield mongo.db.collection('subscribers').findOne({ email: req.body.email });
+    if (subscriber) {
+      res.status(409).send('The provided email is already subscribed to our newsletters and special offers.');
+    } else {
+      mongo.db.collection('subscribers').insertOne({
+        email: req.body.email,
+        created_at: new Date()
+      });
+      res.send(200);
+    }
+  });
 });
 
 /* GET about page. */
