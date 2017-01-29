@@ -8,6 +8,7 @@
   "GALLERY": "GALLERY",
   "HOME": "HOME",
   "I WANT TO BUY THIS PRODUCT": "I WANT TO BUY THIS PRODUCT",
+  "I want to buy a product": "I want to buy a product",
   "MESSAGE": "MESSAGE",
   "Material": "Material",
   "NAME": "NAME",
@@ -15,6 +16,7 @@
   "OUR INSTAGRAM FEED": "OUR INSTAGRAM FEED",
   "PRODUCTS": "PRODUCTS",
   "SEND US A MESSAGE": "SEND US A MESSAGE",
+  "SEND US AN INQUIRY": "SEND US AN INQUIRY",
   "SEND": "SEND",
   "SHARE THIS PRODUCT": "SHARE THIS PRODUCT",
   "SUBJECT": "SUBJECT",
@@ -58,5 +60,7 @@
   "product.material.Wood - walnut fumed": "Wood - walnut fumed",
   "product.material.Wood - walnut": "Wood - walnut",
   "product.material.Wood": "Wood",
-  "product.share": "Take a look at FLAME Furniture Inc. %s product"
+  "product.share": "Take a look at FLAME Furniture Inc. %s product",
+  "products.buy.notice": "You may order our products in custom dimensions. We reply to inquiries within one business day.",
+  "products.buy.thank_you": "Thank you for sending us the inquiry! We will contact you within one business day."
 }

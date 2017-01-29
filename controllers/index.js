@@ -4,6 +4,8 @@ const mailer = require('nodemailer');
 
 const debug = require('debug')('ff:server');
 
+const mongo = require('../mongo');
+
 router.use('/products', require('./products'));
 
 /* GET home page. */
@@ -29,13 +31,21 @@ router.get('/contact', (req, res) => {
 /* POST contact send. */
 router.post('/contact/send', (req, res) => {
 
+  mongo.db.collection('contacts').insertOne({
+    name: req.body.name,
+    email: req.body.email,
+    subject: req.body.subject,
+    message: req.body.message,
+    created_at: new Date()
+  });
+
   const transporter = mailer.createTransport(process.env.NODEMAILER_TRANSPORTER);
 
   const mail = {
     from: 'FLAME Furniture Inc. <flamefurniture@gmail.com>',
     to: process.env.MAIL_TO,
-    subject: 'flame.furniture: ' + req.body.subject,
-    text: req.body.name + ' <' + req.body.email + '>\n\n' + req.body.message
+    subject: `flame.furniture contact with subject '${req.body.subject}'`,
+    text: `${req.body.name} <${req.body.email}>\n\n${req.body.message}`
   };
 
   transporter.sendMail(mail, (error, response) => {

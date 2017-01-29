@@ -51,50 +51,50 @@
       </div>
     </div>
     <hr class="hr-pattern" />
-    <div class="row" id="contact-form-row">
+    <div class="row form-row">
       <div class="col-md-5">
         <h3><%= __('SEND US A MESSAGE') %></h3>
         <form action="/contact/send" method="post">
           <div class="form-group">
             <label for="name"><%= __('NAME') %></label>
-            <input type="text" name="name" class="form-control form-control-border-1" id="name">
+            <input type="text" name="name" class="form-control form-control-border-1" id="name" required>
           </div>
           <div class="form-group">
             <label for="email"><%= __('EMAIL') %></label>
-            <input type="email" name="email" class="form-control form-control-border-2" id="email">
+            <input type="email" name="email" class="form-control form-control-border-2" id="email" required>
           </div>
           <div class="form-group">
             <label for="subject"><%= __('SUBJECT') %></label>
-            <input type="text" name="subject" class="form-control form-control-border-3" id="subject">
+            <input type="text" name="subject" class="form-control form-control-border-3" id="subject" required>
           </div>
           <div class="form-group">
             <label for="message"><%= __('MESSAGE') %></label>
-            <textarea name="message" class="form-control form-control-border-4" rows="4" id="message"></textarea>
+            <textarea name="message" class="form-control form-control-border-4" rows="4" id="message" required></textarea>
           </div>
           <button type="submit" class="btn btn-submit btn-flame"><%= __('SEND') %></button>
         </form>
       </div>
     </div>
-    <div class="row hide" id="contact-form-success-row">
+    <div class="row hide">
       <div class="col-md-12">
-        <h3><%= __('contact.thank_you') %></h3>
+        <h5 class="uppercase"><%= __('contact.thank_you') %></h5>
       </div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
-  $("form").submit(function(event) {
+  $('form').submit(function(event) {
     event.preventDefault();
-    $("button[type=submit]").addClass("disabled");
+    $('button[type=submit]').addClass('disabled');
     $.post('/contact/send', $(this).serialize(), function(data, textStatus, jqXHR) {
-      $("button[type=submit]").removeClass("disabled");
+      $('button[type=submit]').removeClass('disabled');
       if (jqXHR.status === 200) {
-        $("#contact-form-row").slideUp(200);
-        $("#contact-form-success-row").removeClass("hide").slideDown(200);
+        $('.form-row').slideUp(250);
+        $('.form-row + div').removeClass('hide').slideDown(250);
       } else {
-        alert("Failed to send the email!");
+        alert('Failed to send the email!');
       }
-    }, "json");
+    }, 'json');
   });
 </script>

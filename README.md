@@ -20,9 +20,7 @@ contact send test:
 Running
 -------
 
-    $ docker-compose kill
-    $ docker-compose rm -f
-    $ docker-compose build
+    $ npm run docker-compose-rebuild
     $ docker-compose up
 
 Log Mongo DB Queries

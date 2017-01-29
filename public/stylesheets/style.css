@@ -77,6 +77,13 @@ hr.hr-solid {
   font-weight: 700;
 }
 
+p.notice {
+  text-transform: uppercase;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
 
 /**
 * Form
@@ -865,7 +872,7 @@ nav.categories ul ul li {
   cursor: pointer;
   opacity: 0.65;
   -webkit-user-drag: none;
-  transition: opacity 150ms;
+  transition: opacity 250ms;
   transition-timing-function: ease-in;
   -webkit-transform: translateZ(0);
   width: calc(100% + .49px); /* https://css-tricks.com/forums/topic/css3-transition-opacity-causing-glitch-in-images/#post-203480 */

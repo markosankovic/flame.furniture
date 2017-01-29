@@ -27,34 +27,13 @@
           <% } %>
         <% } %>
       </div>
-      <div class="col-sm-5 product-info">
-        <h2 class="product-name">
-          <%= product.name %>
-        </h2>
-        <div class="product-category-name">
-          <%- link_to(__(`category.${product.category.name}`), `/products/${product.category.slug}`) %>
-        </div>
-        <% if (product.dimension) { %>
-          <div>
-            <%= __('Dimension') %>:
-          </div>
-          <div class="product-dimension">
-            <%= productDimension(product.dimension, __) %>
-          </div>
-        <% } %>
-        <% if (product.material) { %>
-          <div>
-            <%= __('Material') %>:
-          </div>
-          <div class="product-material">
-            <%= productMaterial(product.material, __) %>
-          </div>
-        <% } %>
+      <div class="col-sm-5">
+        <%- include('_product-info', { product: product }) %>
         <div style="width: 40%;">
           <hr class="hr-solid">
         </div>
         <div class="text-right">
-          <button class="btn btn-flame"><%= __('I WANT TO BUY THIS PRODUCT') %></button>
+          <a href="/products/<%= product.slug %>/buy" class="btn btn-flame"><%= __('I WANT TO BUY THIS PRODUCT') %></a>
         </div>
         <hr class="hr-solid"/>
         <div><%= __('SHARE THIS PRODUCT') %>:</div>
@@ -79,8 +58,14 @@
 
   $('#product-gallery-thumbnails img').click(function(e) {
     $('.carousel').carousel($(e.currentTarget).data('index'));
-    $('#product-gallery-thumbnails img').removeClass('active');
-    $(e.currentTarget).addClass('active');
   });
 
+  $(function () {
+    $('.carousel').on('slide.bs.carousel', function (e) {
+      var index = $('.carousel .item').index(e.relatedTarget);
+      $('#product-gallery-thumbnails img').removeClass('active');
+      var thumbnail = $('#product-gallery-thumbnails img').get(index);
+      $(thumbnail).addClass('active');
+    });
+  });
 </script>

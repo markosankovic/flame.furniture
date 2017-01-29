@@ -1,0 +1,61 @@
+<div class="row" id="products-buy-page">
+  <div class="col-md-12">
+    <%- include('_categories-list', { categories: categories }) %>
+    <h2 class="product-name">
+      <%- __('I want to buy a product') %>
+    </h2>
+    <div class="row">
+      <div class="col-sm-5">
+        <%- include('_product-info', { product: product }) %>
+        <div style="width: 40%;">
+          <hr class="hr-solid">
+        </div>
+        <img src="/images/products/featured/<%= product.slug %>.jpg" style="max-width: 100%;" />
+      </div>
+      <div class="col-sm-7">
+        <div class="row form-row">
+          <div class="col-sm-12">
+            <h3><%= __('SEND US AN INQUIRY') %></h3>
+            <p class="notice text-light"><%= __('products.buy.notice') %></p>
+            <form action="/products/buy/<%= product.slug %>/send" method="post">
+              <div class="form-group">
+                <label for="name"><%= __('NAME') %></label>
+                <input type="text" name="name" class="form-control form-control-border-1" id="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email"><%= __('EMAIL') %></label>
+                <input type="email" name="email" class="form-control form-control-border-2" id="email" required>
+              </div>
+              <div class="form-group">
+                <label for="message"><%= __('MESSAGE') %></label>
+                <textarea name="message" class="form-control form-control-border-4" rows="4" id="message" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-submit btn-flame"><%= __('SEND') %></button>
+            </form>
+          </div>
+        </div>
+        <div class="row hide">
+          <div class="col-md-12">
+            <h5 class="uppercase"><%= __('products.buy.thank_you') %></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('form').submit(function(event) {
+    event.preventDefault();
+    $('button[type=submit]').addClass('disabled');
+    $.post('/products/<%= product.slug %>/buy/send', $(this).serialize(), function(data, textStatus, jqXHR) {
+      $('button[type=submit]').removeClass('disabled');
+      if (jqXHR.status === 200) {
+        $('.form-row').slideUp(250);
+        $('.form-row + div').removeClass('hide').slideDown(250);
+      } else {
+        alert('Failed to send the email!');
+      }
+    }, 'json');
+  });
+</script>

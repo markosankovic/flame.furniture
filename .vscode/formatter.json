@@ -34,5 +34,11 @@
     "indent_size": 2,
     "indent_char": " ",
     "indent_character": " "
+  },
+  "ejs": {
+    "indent_inner_html": false,
+    "indent_size": 2,
+    "indent_char": " ",
+    "indent_character": " "
   }
 }

@@ -3,6 +3,7 @@ const i18n = require('i18n');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
 const expressHelpers = require('express-helpers');
@@ -52,6 +53,11 @@ app.locals.productMaterial = function (material, __) {
 // connect to mongodb
 mongo.connect('mongodb://mongo:27017/ff');
 
+// use body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// load all files in controllers directory
 app.use(require('./controllers'));
 
 // catch 404 and forward to error handler

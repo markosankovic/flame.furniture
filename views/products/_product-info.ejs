@@ -1,0 +1,24 @@
+<div class="product-info">
+    <h2 class="product-name">
+        <%- link_to(product.name, `/products/${product.slug}`) %>
+    </h2>
+    <div class="product-category-name">
+        <%- link_to(__(`category.${product.category.name}`), `/products/${product.category.slug}`) %>
+    </div>
+    <% if (product.dimension) { %>
+        <div>
+            <%= __('Dimension') %>:
+        </div>
+        <div class="product-dimension">
+            <%= productDimension(product.dimension, __) %>
+        </div>
+    <% } %>
+    <% if (product.material) { %>
+        <div>
+            <%= __('Material') %>:
+        </div>
+        <div class="product-material">
+            <%= productMaterial(product.material, __) %>
+        </div>
+    <% } %>
+</div>
