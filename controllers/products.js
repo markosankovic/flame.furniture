@@ -35,7 +35,7 @@ router.get('/:slug?', (req, res) => {
         } else {
           let subcategories = yield mongo.db.collection('categories').find({ parent_id: category._id }, ['_id']).toArray();
           let subcategoriesIds = subcategories.map(subcategory => subcategory._id);
-          products = yield products.filter({ category_id: { $in: subcategoriesIds } }).toArray();
+          products = yield products.filter({ $or: [{ category_id: category._id }, { category_id: { $in: subcategoriesIds } }] }).toArray();
         }
         for (let product of products) {
           product.category = yield mongo.db.collection('categories').findOne({ _id: product.category_id });
@@ -82,7 +82,7 @@ router.post('/:slug/buy/send', (req, res) => {
   co(function* () {
     let product = yield mongo.db.collection('products').findOne({ slug: req.params.slug });
     if (product) {
-      
+
       mongo.db.collection('inquiries').insertOne({
         name: req.body.name,
         email: req.body.email,
