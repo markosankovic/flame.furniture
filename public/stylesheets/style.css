@@ -191,6 +191,7 @@ textarea.form-control {
 }
 
 #logo {
+  max-width: 302px;
   margin-left: 15px;
   transition: -webkit-filter 150ms, filter 150ms;
   transition-timing-function: ease-in;
