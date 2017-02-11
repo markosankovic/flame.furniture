@@ -10,7 +10,7 @@ const co = require('co');
 const mongo = require('../mongo');
 
 /* GET products page. */
-router.get('/:slug?', (req, res) => {
+router.get('/:slug?', (req, res, next) => {
   co(function* () {
     const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 
@@ -28,21 +28,26 @@ router.get('/:slug?', (req, res) => {
         res.render('products/product', { title: `${product.name} - FLAME Furniture Inc.`, categories: categories, product: product, fullUrl: fullUrl });
       } else {
         let category = yield mongo.db.collection('categories').findOne({ slug: req.params.slug });
-        let products = mongo.db.collection('products').find().sort({ name: 1 });
-        if (category.parent_id) {
-          category.parent = yield mongo.db.collection('categories').findOne({ _id: category.parent_id });
-          products = yield products.filter({ category_id: category._id }).toArray();
+        if (category) {
+          let products = mongo.db.collection('products').find().sort({ name: 1 });
+          if (category.parent_id) {
+            category.parent = yield mongo.db.collection('categories').findOne({ _id: category.parent_id });
+            products = yield products.filter({ category_id: category._id }).toArray();
+          } else {
+            let subcategories = yield mongo.db.collection('categories').find({ parent_id: category._id }, ['_id']).toArray();
+            let subcategoriesIds = subcategories.map(subcategory => subcategory._id);
+            products = yield products.filter({ $or: [{ category_id: category._id }, { category_id: { $in: subcategoriesIds } }] }).toArray();
+          }
+          for (let product of products) {
+            product.category = yield mongo.db.collection('categories').findOne({ _id: product.category_id });
+            const dimensions = sizeOf(`${__dirname}/../public/images/products/featured/${product.slug}.jpg`);
+            product.featured_image_layout = dimensions.width > dimensions.height ? 'landscape' : 'portrait';
+          }
+          res.render('products/index', { title: `${category.name} - FLAME Furniture Inc.`, categories: categories, category: category, products: products, fullUrl: fullUrl });
         } else {
-          let subcategories = yield mongo.db.collection('categories').find({ parent_id: category._id }, ['_id']).toArray();
-          let subcategoriesIds = subcategories.map(subcategory => subcategory._id);
-          products = yield products.filter({ $or: [{ category_id: category._id }, { category_id: { $in: subcategoriesIds } }] }).toArray();
+          res.status(404);
+          next();
         }
-        for (let product of products) {
-          product.category = yield mongo.db.collection('categories').findOne({ _id: product.category_id });
-          const dimensions = sizeOf(`${__dirname}/../public/images/products/featured/${product.slug}.jpg`);
-          product.featured_image_layout = dimensions.width > dimensions.height ? 'landscape' : 'portrait';
-        }
-        res.render('products/index', { title: `${category.name} - FLAME Furniture Inc.`, categories: categories, category: category, products: products, fullUrl: fullUrl });
       }
     } else {
       let products = yield mongo.db.collection('products').find().sort({ name: 1 }).toArray();
