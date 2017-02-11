@@ -1,22 +1,16 @@
-<div class="row row-categories">
-  <div class="col-md-12">
-    <nav class="categories text-center">
-      <ul>
-        <% for (let category of categories) { %>
-          <li>
-            <%- link_to(__(`category.${category.name}`), `/products/${category.slug}`) %>
-            <% if (category.subcategories && category.subcategories.length > 0) { %>
-              <ul class="text-left">
-                <% for (let subcategory of category.subcategories) { %>              
-                  <li>
-                    <%- link_to(__(`category.${subcategory.name}`), `/products/${subcategory.slug}`) %>                  
-                  </li>
-                <% } %>
-              </ul>
-            <% } %>
-          </li>
-        <% } %>
-      </ul>
-    </nav>
-  </div>
-</div>
+<ul>
+  <% for (let category of categories) { %>
+    <li>
+      <%- link_to(__(`category.${category.name}`), `/products/${category.slug}`) %>
+      <% if (category.subcategories && category.subcategories.length > 0) { %>
+        <ul class="text-left">
+          <% for (let subcategory of category.subcategories) { %>              
+            <li>
+              <%- link_to(__(`category.${subcategory.name}`), `/products/${subcategory.slug}`) %>                  
+            </li>
+          <% } %>
+        </ul>
+      <% } %>
+    </li>
+  <% } %>
+</ul>

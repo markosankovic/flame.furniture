@@ -1,6 +1,6 @@
 <div class="row" id="products-product-page">
   <div class="col-md-12">
-    <%- include('_categories-list', { categories: categories }) %>
+    <%- include('_categories-nav', { categories: categories }) %>
     <% if (locals.category) { %>
       <%- include('_category-title', { category: category }) %>
     <% } %>
@@ -33,14 +33,14 @@
           <hr class="hr-solid">
         </div>
         <div class="text-right">
-          <a href="/products/<%= product.slug %>/buy" class="btn btn-flame"><%= __('I WANT TO BUY THIS PRODUCT') %></a>
+          <a href="/products/<%= product.slug %>/buy" class="btn btn-flame"><%= __('BUY THIS PRODUCT') %></a>
         </div>
         <hr class="hr-solid"/>
         <div><%= __('SHARE THIS PRODUCT') %>:</div>
         <div class="share-product">
-          <a href="http://www.facebook.com/share.php?u=<%= fullUrl %>&title=<%= __('product.share', product.name) %>"><img src="/images/share-facebook.png" title="Facebook: <%= __('product.share', product.name) %>"></a>
-          <a href="http://twitter.com/intent/tweet?status=<%= __('product.share', product.name) %>+<%= fullUrl %>"><img src="/images/share-twitter.png" title="Twitter: <%= __('product.share', product.name) %>"></a>
-          <a href="http://pinterest.com/pin/create/bookmarklet/?media=furniture&url=<%= fullUrl %>&is_video=false&description=<%= __('product.share', product.name) %>"><img src="/images/share-pinterest.png" title="Pinterest: <%= __('product.share', product.name) %>"></a>
+          <a href="http://www.facebook.com/share.php?u=<%= fullUrl %>&title=<%= __('product.share', product.name) %>"><img src="/images/share-facebook.png" title="Facebook: <%= __('product.share', product.name) %>" width="53" height="53"></a>
+          <a href="http://twitter.com/intent/tweet?status=<%= __('product.share', product.name) %>+<%= fullUrl %>"><img src="/images/share-twitter.png" title="Twitter: <%= __('product.share', product.name) %>" width="53" height="53"></a>
+          <a href="http://pinterest.com/pin/create/bookmarklet/?media=furniture&url=<%= fullUrl %>&is_video=false&description=<%= __('product.share', product.name) %>"><img src="/images/share-pinterest.png" title="Pinterest: <%= __('product.share', product.name) %>" width="53" height="53"></a>
         </div>
       </div>
     </div>

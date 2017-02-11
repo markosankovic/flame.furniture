@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
 const expressHelpers = require('express-helpers');
+const co = require('co');
 const mongo = require('./mongo');
 
 require('dotenv').config(); // load environment variables from a .env file into process.env
@@ -56,6 +57,18 @@ mongo.connect('mongodb://mongo:27017/ff');
 // use body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// application middleware
+app.use(function (req, res, next) {
+  co(function* () {
+    let categories = yield mongo.db.collection('categories').find({ parent_id: { $exists: false } }).toArray();
+    for (let category of categories) {
+      category.subcategories = yield mongo.db.collection('categories').find({ parent_id: category._id }).toArray();
+    }
+    app.locals.categories = categories;
+    next();
+  });
+});
 
 // load all files in controllers directory
 app.use(require('./controllers'));
