@@ -53,13 +53,14 @@ a:focus {
 }
 
 hr.hr-pattern {
-  height: 16px;
+  height: 15px;
   border-style: solid;
   border-width: 3px;
   border-radius: 3px;
   border-color: #4f4f4f;
-  border-image: url("../images/hr-pattern-border.png") 3 5 3 5 fill repeat;
+  border-image: url("../images/hr-pattern-border.png") 6 7 6 7 fill;
   background: url("../images/hr-pattern.png") repeat-x;
+  background-size: auto 100%;
   margin-bottom: 30px;
 }
 
@@ -67,7 +68,7 @@ hr.hr-solid {
   border-style: solid;
   border-width: 3px 0px 0px;
   border-color: #4f4f4f;
-  border-image: url("../images/hr-solid-border.png") 3 3 3 3 fill repeat;
+  border-image: url("../images/hr-solid-border.png") 6 6 6 6 fill;
 }
 
 .text-light {
@@ -303,19 +304,19 @@ textarea.form-control {
 }
 
 .form-control-border-1 {
-  border-image: url("../images/form-control-border-1.png") 3 3 3 3 fill repeat;
+  border-image: url("../images/form-control-border-1.png") 6 6 6 6 fill;
 }
 
 .form-control-border-2 {
-  border-image: url("../images/form-control-border-2.png") 3 3 3 3 fill repeat;
+  border-image: url("../images/form-control-border-2.png") 6 6 6 6 fill;
 }
 
 .form-control-border-3 {
-  border-image: url("../images/form-control-border-3.png") 3 3 3 3 fill repeat;
+  border-image: url("../images/form-control-border-3.png") 6 6 6 6 fill;
 }
 
 .form-control-border-4 {
-  border-image: url("../images/form-control-border-4.png") 3 3 3 3 fill repeat;
+  border-image: url("../images/form-control-border-4.png") 6 6 6 6 fill;
 }
 
 
@@ -399,7 +400,7 @@ textarea.form-control {
   border-width: 3px;
   border-radius: 3px;
   border-color: #4f4f4f;
-  border-image: url("../images/nav-border.png") 3 3 3 3 fill repeat;
+  border-image: url("../images/nav-border.png") 6 6 6 6 fill;
 }
 
 #nav>div>div>div:first-child a {
@@ -418,6 +419,7 @@ textarea.form-control {
   height: 34px;
   width: 11px;
   background: url("../images/nav-separator.png") no-repeat right center;
+  background-size: 14px 34px;
 }
 
 @media (max-width: 768px) {
@@ -525,8 +527,9 @@ a:focus {
   border-width: 2px;
   border-radius: 3px;
   border-color: #4f4f4f;
-  border-image: url("../images/instagram-border.png") 2 2 2 2 fill repeat;
-  background: url("../images/instagram-line-pattern.png");
+  border-image: url("../images/instagram-border.png") 4 4 4 4 fill;
+  background: url("../images/instagram-line-pattern.png") repeat-x;
+  background-size: auto 100%;
 }
 
 #instagram>div>div>div {
@@ -541,6 +544,7 @@ a:focus {
   height: 26px;
   width: 7px;
   background: url("../images/instagram-separator.png") no-repeat right center;
+  background-size: 9px 26px;
 }
 
 #instagram>div>div>div:first-child {
@@ -570,14 +574,15 @@ a:focus {
 }
 
 #footer>div>div {
+  min-height: 159px;
   border-style: solid;
   border-width: 2px;
   border-radius: 3px;
   border-color: #4f4f4f;
-  border-image: url("../images/footer-border.png") 2 2 2 2 fill repeat;
+  border-image: url("../images/footer-border.png") 4 4 4 4 fill;
 }
 
-#footer>div>div:first-child>div {
+#footer>div>div>div>div:first-child>div {
   position: relative;
   height: 123px;
   padding: 20px;
@@ -618,7 +623,7 @@ a:focus {
 
 #footer .col-copy {
   font-size: .8em;
-  padding: 6px 0;
+  padding: 7px 0;
 }
 
 #footer .col-links::after {
@@ -629,6 +634,7 @@ a:focus {
   height: 123px;
   width: 8px;
   background: url("../images/footer-col-links-separator.png") no-repeat right bottom;
+  background-size: 8px 123px;
   z-index: 10;
 }
 
@@ -640,6 +646,7 @@ a:focus {
   height: 123px;
   width: 8px;
   background: url("../images/footer-col-empty-separator.png") no-repeat right bottom;
+  background-size: 8px 123px;
 }
 
 @media (max-width: 768px) {
@@ -654,12 +661,12 @@ a:focus {
   left: 0;
   width: 100%;
   height: 34px;
-  background: url("../images/footer-col-empty-line-pattern.png");
+  background: url("../images/footer-col-empty-line-pattern.png") repeat-x;
+  background-size: auto 100%;
   border-top-style: solid;
   border-top-width: 2px;
-  border-radius: 3px;
   border-top-color: #4f4f4f;
-  border-image: url("../images/footer-border.png") 2 2 2 2 fill repeat;
+  border-image: url("../images/footer-horizontal-border.png") 4 0 0 0 fill;
 }
 
 #footer .col-newsletter>div:last-child {
@@ -670,9 +677,8 @@ a:focus {
   height: 34px;
   border-top-style: solid;
   border-top-width: 2px;
-  border-radius: 3px;
   border-top-color: #4f4f4f;
-  border-image: url("../images/footer-border.png") 2 2 2 2 fill repeat;
+  border-image: url("../images/footer-horizontal-border.png") 4 0 0 0 fill;
   padding-top: 3px;
   letter-spacing: initial;
 }
@@ -689,10 +695,11 @@ a:focus {
 #footer .col-newsletter input[type=email] {
   border: 3px solid #e76647;
   border-radius: 3px;
-  font-size: 0.9em;
+  font-size: 0.72em;
   color: #565656;
   padding: 4px 12px;
   width: 100%;
+  height: 32px;
 }
 
 #footer .col-newsletter .newsletter-form-container {
@@ -736,7 +743,21 @@ a:focus {
 }
 
 #footer .subscribe-thanks {
+  font-size: 0.8em;
   margin-top: 9px;
+  background-color: #e0664c;
+  border-radius: 3px;
+  padding: 6px;
+  color: white;
+  text-transform: uppercase;
+}
+
+#footer .row-copyright {
+  border-top: 2px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #4f4f4f;
+  border-image: url("../images/footer-horizontal-border.png") 4 0 0 0 fill;
 }
 
 
@@ -775,7 +796,7 @@ a:focus {
   border-width: 3px;
   border-radius: 3px;
   border-color: #4f4f4f;
-  border-image: url("../images/contact-info-border.png") 3 3 3 3 fill repeat;
+  border-image: url("../images/contact-info-border.png") 6 6 6 6 fill;
 }
 
 #contact-info>div>div>div:first-child::after {
@@ -786,6 +807,7 @@ a:focus {
   height: 399px;
   width: 8px;
   background: url("../images/contact-info-separator.png") no-repeat right center;
+  background-size: 8px 399px;
 }
 
 @media (max-width: 768px) {
@@ -820,7 +842,7 @@ nav.categories ul {
 
 nav.categories>ul {
   font-size: .72em;
-  border-image: url("../images/categories-border.png") 3 3 3 3 fill repeat;
+  border-image: url("../images/categories-border.png") 0 0 6 0 fill;
   border-bottom: 3px solid #414141;
 }
 
@@ -860,7 +882,7 @@ nav.categories ul ul {
   border-width: 2px;
   border-radius: 2px;
   border-color: #4f4f4f;
-  border-image: url("../images/subcategories-border.png") 2 2 2 2 fill repeat;
+  border-image: url("../images/subcategories-border.png") 2 2 2 2 repeat;
   padding: 8px 0;
   z-index: 9;
   -webkit-box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.2);

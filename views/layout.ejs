@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <title>
     <%= title %>
@@ -118,59 +118,63 @@
         </div>
 
         <div class="row" id="footer">
-          <div class="col-md-12">
+          <div class="col-xs-12">
             <div class="row">
-              <div class="col-md-3 col-sm-6 hidden-xs col-links">
-                <ul>
-                  <li>
-                    <%- link_to(__('HOME'), '/') %>
-                  </li>
-                  <li>
-                    <%- link_to(__('ABOUT US'), '/about') %>
-                  </li>
-                  <li>
-                    <%- link_to(__('PRODUCTS'), '/products') %>
-                  </li>
-                  <li>
-                    <%- link_to(__('PRESS'), '/press') %>
-                  </li>
-                  <li>
-                    <%- link_to(__('CONTACT'), '/contact') %>
-                  </li>
-                </ul>
-              </div>
-              <div class="col-md-5 hidden-sm hidden-xs col-empty">
-                <div class="footer-col-empty-line-pattern"></div>
-              </div>
-              <div class="col-xs-12 col-sm-6 col-md-4 col-newsletter">
-                <div class="text-center">
-                  <div class="receive-news">
-                    <%= __('RECEIVE NEWS AND SPECIAL OFFERS') %>
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-md-3 col-sm-6 hidden-xs col-links">
+                    <ul>
+                      <li>
+                        <%- link_to(__('HOME'), '/') %>
+                      </li>
+                      <li>
+                        <%- link_to(__('ABOUT US'), '/about') %>
+                      </li>
+                      <li>
+                        <%- link_to(__('PRODUCTS'), '/products') %>
+                      </li>
+                      <li>
+                        <%- link_to(__('PRESS'), '/press') %>
+                      </li>
+                      <li>
+                        <%- link_to(__('CONTACT'), '/contact') %>
+                      </li>
+                    </ul>
                   </div>
-                  <div class="newsletter-form-container">
-                    <p class="subscribe-thanks" style="display: none;">
-                      <%= __('layout.subscribe.thanks') %>
-                    </p>
-                    <form action="/subscribe" method="post" name="subscribeForm">
-                      <input type="email" name="email" placeholder="<%= __('YOUR EMAIL...') %>" required />
-                      <input type="submit" value="<%= __('CONFIRM') %>" />
-                    </form>
+                  <div class="col-md-5 hidden-sm hidden-xs col-empty">
+                    <div class="footer-col-empty-line-pattern"></div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-newsletter">
+                    <div class="text-center">
+                      <div class="receive-news">
+                        <%= __('RECEIVE NEWS AND SPECIAL OFFERS') %>
+                      </div>
+                      <div class="newsletter-form-container">
+                        <p class="subscribe-thanks" style="display: none;">
+                          <%= __('layout.subscribe.thanks') %>
+                        </p>
+                        <form action="/subscribe" method="post" name="subscribeForm">
+                          <input type="email" name="email" class="form-control" placeholder="<%= __('YOUR EMAIL...') %>" required />
+                          <input type="submit" value="<%= __('CONFIRM') %>" />
+                        </form>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <a href="https://www.facebook.com/flame.furniture"><img src="/images/social-facebook.png" width="26" height="26" /></a>
+                      <!--
+                        <a href="#" data-toggle="tooltip"><img src="/images/social-twitter.png"/></a>
+                        <a href="#" data-toggle="tooltip"><img src="/images/social-pinterest.png"/></a>
+                      -->
+                      <a href="https://www.instagram.com/flame.furniture"><img src="/images/social-instagram.png" width="26" height="26" /></a>
+                    </div>
                   </div>
                 </div>
-                <div class="text-center">
-                  <a href="https://www.facebook.com/flame.furniture"><img src="/images/social-facebook.png" width="26" height="26" /></a>
-                  <!--
-                    <a href="#" data-toggle="tooltip"><img src="/images/social-twitter.png"/></a>
-                    <a href="#" data-toggle="tooltip"><img src="/images/social-pinterest.png"/></a>
-                  -->
-                  <a href="https://www.instagram.com/flame.furniture"><img src="/images/social-instagram.png" width="26" height="26" /></a>
+                <div class="row row-copyright">
+                  <div class="col-xs-12 col-copy text-center">
+                    &copy; 2017 <a href="/">FLAME FURNITURE INC.</a>, built by <a href="http://malinered.com">LITTLE MESS</a>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-copy text-center">
-                &copy; 2016 <a href="/">FLAME FURNITURE INC.</a>, built by <a href="http://malinered.com">LITTLE MESS</a>
-              </div>
+              <div>
             </div>
           </div>
         </div>
@@ -198,7 +202,7 @@
         $('input[type=submit]', $form).addClass('disabled');
         $.post('/subscribe', $(this).serialize())
           .done(function() {
-            $('.subscribe-thanks').slideDown(450);
+            $('.subscribe-thanks').fadeIn(500);
             $form.hide();
           }).fail(function(jqXHR) {
             alert(jqXHR.responseText);
