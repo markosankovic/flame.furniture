@@ -21,7 +21,11 @@ Running
 -------
 
     $ npm run docker-compose-rebuild
-    $ docker-compose up
+    $ npm run docker-compose-dev
+
+In production:
+
+    $ npm run docker-compose-prod
 
 Log Mongo DB Queries
 -----------------

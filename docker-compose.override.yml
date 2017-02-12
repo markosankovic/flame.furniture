@@ -6,3 +6,9 @@ services:
     volumes:
     - .:/app
     command: npm run server
+  mongo-express:
+    image: mongo-express
+    ports:
+    - "8081:8081"
+    links:
+    - mongo
