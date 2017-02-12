@@ -70,6 +70,12 @@ app.use(function (req, res, next) {
   });
 });
 
+app.use(function (req, res, next) {
+  app.locals.baseUrl = `${req.protocol}://${req.get('host')}`;
+  app.locals.fullUrl = `${app.locals.baseUrl}${req.originalUrl}`;
+  next();
+});
+
 // load all files in controllers directory
 app.use(require('./controllers'));
 
