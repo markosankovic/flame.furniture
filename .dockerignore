@@ -1,0 +1,7 @@
+# currently docker-compose build ignores ".dockerignore"
+    .git
+    .cache
+    public/carousel/**/*
+    public/carousel
+    public/images/products/**/*
+    public/images/products

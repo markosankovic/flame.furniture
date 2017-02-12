@@ -6,6 +6,9 @@ services:
     - DEBUG=ff:*
     links:
     - mongo
+    volumes:
+    - ./public/images/carousel:/app/public/images/carousel
+    - ./public/images/products:/app/public/images/products
   mongo-seed:
     build: ./mongo-seed
     links:
