@@ -3,7 +3,7 @@
     <div id="carousel-index" class="carousel slide" data-ride="carousel">
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">
-        <% for (let i = 1; i <= 11; i++) { %>
+        <% for (let i = 1; i <= carouselCount; i++) { %>
           <div class="item <% if (i === 1) { %>active<% } %>">
             <img src="images/carousel/<%= i %>.jpg">
           </div>

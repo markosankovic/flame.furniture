@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mailer = require('nodemailer');
+const fs = require('fs');
 
 const debug = require('debug')('ff:server');
 
@@ -11,7 +12,9 @@ router.use('/products', require('./products'));
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  res.render('index', { title: 'FLAME Furniture Inc.' });
+  const filenames = fs.readdirSync(`${__dirname}/../public/images/carousel/`);
+  let carouselCount = filenames.filter(filename => filename.endsWith('jpg')).length;
+  res.render('index', { title: 'FLAME Furniture Inc.', carouselCount: carouselCount });
 });
 
 /* POST subscribe to newsletter and special offers. */
