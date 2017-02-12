@@ -52,6 +52,10 @@ a:focus {
   text-decoration: none;
 }
 
+p {
+  font-weight: lighter;
+}
+
 hr.hr-pattern {
   height: 15px;
   border-style: solid;
@@ -510,19 +514,22 @@ a:focus {
 
 
 /**
-* Instagram
+* Row header
 */
 
-#instagram {
+.row-header {
   font-size: .80em;
+  font-weight: lighter;
   letter-spacing: .2em;
+  margin-top: 30px;
+  margin-bottom: 15px;
 }
 
-#instagram>div {
+.row-header>div {
   padding: 0 30px;
 }
 
-#instagram>div>div {
+.row-header>div>div {
   border-style: solid;
   border-width: 2px;
   border-radius: 3px;
@@ -532,11 +539,11 @@ a:focus {
   background-size: auto 100%;
 }
 
-#instagram>div>div>div {
+.row-header>div>div>div {
   padding: 5px 16px;
 }
 
-#instagram>div>div>div:first-child::after {
+.row-header>div>div>div:first-child::after {
   content: "";
   position: absolute;
   right: -3px;
@@ -547,13 +554,13 @@ a:focus {
   background-size: 9px 26px;
 }
 
-#instagram>div>div>div:first-child {
+.row-header>div>div>div:first-child {
   background-color: #f2f2f2;
 }
 
 @media (max-width: 992px) {
-  #instagram>div>div,
-  #instagram>div>div>div:first-child::after {
+  .row-header>div>div,
+  .row-header>div>div>div:first-child::after {
     background: none;
   }
 }
