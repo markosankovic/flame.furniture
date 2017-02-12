@@ -9,7 +9,7 @@
     "test": "mocha --recursive",
     "docker-compose-rebuild": "docker-compose kill && docker-compose rm -f && docker-compose build",
     "docker-compose-dev": "docker-compose up",
-    "docker-compose-prod": "git pull && docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
+    "docker-compose-prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d"
   },
   "dependencies": {
     "body-parser": "^1.16.0",
