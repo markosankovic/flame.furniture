@@ -767,6 +767,39 @@ a:focus {
   border-image: url("../images/footer-horizontal-border.png") 4 0 0 0 fill;
 }
 
+/**
+* About
+*/
+
+.members {
+  font-size: .82em;
+  letter-spacing: .1em;
+}
+
+.members .member {
+  margin: 40px 0 20px 0;
+}
+
+.members .member img {
+  width: 210px;
+  height: 210px;
+  -webkit-clip-path: polygon(50% 0%, 100% 27%, 100% 73%, 50% 100%, 0% 73%, 0% 27%);
+  clip-path: polygon(50% 0%, 100% 27%, 100% 73%, 50% 100%, 0% 73%, 0% 27%);
+  transition: all 250ms ease;
+}
+
+.members .member img:hover {
+  -webkit-clip-path: polygon(34% 0, 100% 25%, 100% 75%, 66% 97%, 0 79%, 0% 25%);
+  clip-path: polygon(34% 0, 100% 25%, 100% 75%, 66% 97%, 0 79%, 0% 25%);
+}
+
+.members .member .name {
+  margin-top: 40px;
+}
+
+.members .member .title {
+  font-weight: lighter;
+}
 
 /**
  * Gallery page
