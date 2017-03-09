@@ -16,6 +16,6 @@
   { "_id": "5888e93287b4c53410878a3f", "category_id": "586f6d673bfefcbe1ce643eb", "name": "CUBE", "slug": "cube", "dimension": { "length": 23, "width": 23, "height": 33 }, "material": ["Wood - oak", "Metal"] },
   { "_id": "5888e93287b4c53410878a40", "category_id": "586f6d673bfefcbe1ce643eb", "name": "EUREKA", "slug": "eureka", "dimension": { "length": 23, "width": 23, "height": 33 }, "material": ["Wood - oak", "Metal"] },
   { "_id": "5888e93287b4c53410878a41", "category_id": "586f6d673bfefcbe1ce643eb", "name": "MONOLIT", "slug": "monolit", "dimension": { "length": 13, "width": 17, "height": 70 }, "material": ["Wood - oak", "Metal"] },
-  { "_id": "5888e93287b4c53410878a42", "category_id": "586f6e2f3bfefcbe1ce643f1", "name": "C-CONVEX", "slug": "c-convex", "dimension": { "diameter": 45 }, "material": ["Wood - walnut"] },
-  { "_id": "5888e93287b4c53410878a43", "category_id": "586f6e2f3bfefcbe1ce643f1", "name": "S-CONVEX", "slug": "s-convex", "dimension": { "diameter": 45 }, "material": ["Wood - oak"] }
+  { "_id": "5888e93287b4c53410878a42", "category_id": "586f6e2f3bfefcbe1ce643f1", "name": "S-CONVEX", "slug": "c-convex", "dimension": { "diameter": 45 }, "material": ["Wood - walnut"] },
+  { "_id": "5888e93287b4c53410878a43", "category_id": "586f6e2f3bfefcbe1ce643f1", "name": "C-CONVEX", "slug": "s-convex", "dimension": { "diameter": 45 }, "material": ["Wood - oak"] }
 ]
