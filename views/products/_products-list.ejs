@@ -2,7 +2,7 @@
   <% for (let product of products) { %>
     <div class="grid-item product-item layout-<%= product.featured_image_layout %>">
       <img src="/images/products/featured/<%= product.slug %>.jpg" />
-      <div class="product-info text-center">
+      <div class="product-info text-center" data-href="<%= `/products/${product.slug}` %>">
         <h3 class="product-name">
           <%- link_to(product.name, `/products/${product.slug}`) %>
         </h3>
@@ -49,6 +49,12 @@
       $($target).animateCss('fadeOut', function() {
         $($target).css('visibility', 'hidden');
       });
+    });
+
+    $('.product-info').click(function (e) {
+      var $productInfo = $(e.currentTarget);
+      window.location.href = $productInfo.data('href');
+      $productInfo.parent().mouseleave();
     });
   });
 </script>

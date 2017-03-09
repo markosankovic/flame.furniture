@@ -969,6 +969,7 @@ nav.categories ul ul li {
   position: relative;
   font-weight: lighter;
   color: #808080;
+  cursor: pointer;
 }
 
 .product-info .product-name {
