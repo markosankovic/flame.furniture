@@ -11,7 +11,7 @@
             <div class="carousel-inner" role="listbox">
               <% for (let i = 0; i < product.gallery_count; i++) { %>
                 <div class="item <% if (i === 0) { %>active<% } %>">
-                  <img class="d-block img-fluid img-standard" src="/images/products/gallery/<%= product.slug %>/<%= i %>.jpg" data-title="<%= product.name %>" data-caption="<%= productDimension(product.dimension, __) %>, <%= productMaterial(product.material, __) %>" />
+                  <img class="d-block img-fluid img-standard" src="/images/products/gallery/<%= product.slug %>/<%= i %>.jpg" data-title="<%= product.name %>" data-caption="<%- __(`category.${product.category.name}`) %>, <%= productDimension(product.dimension, __) %>, <%= productMaterial(product.material, __) %>" />
                 </div>
               <% } %>
             </div>
