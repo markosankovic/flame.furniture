@@ -96,6 +96,15 @@ p.notice {
   padding-right: 0 !important;
 }
 
+figure figcaption h1 {
+  font-family: "brandongrotesque", "Lucida Grande", Helvetica, Arial, sans-serif !important;
+  font-weight: 900 !important;
+}
+
+figure figcaption h2 {
+  font-family: "brandongrotesque", "Lucida Grande", Helvetica, Arial, sans-serif !important;
+  font-weight: 400 !important;
+}
 
 /**
 * Toggle Styles
@@ -1070,6 +1079,7 @@ nav.categories ul ul li {
 
 #carousel-product-gallery img.img-standard {
   width: 100%;
+  cursor: url("../images/product-image-cursor.png") 25 25, pointer;
 }
 
 #product-gallery-thumbnails {

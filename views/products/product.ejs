@@ -11,7 +11,7 @@
             <div class="carousel-inner" role="listbox">
               <% for (let i = 0; i < product.gallery_count; i++) { %>
                 <div class="item <% if (i === 0) { %>active<% } %>">
-                  <img class="d-block img-fluid img-standard" src="/images/products/gallery/<%= product.slug %>/<%= i %>.jpg">
+                  <img class="d-block img-fluid img-standard" src="/images/products/gallery/<%= product.slug %>/<%= i %>.jpg" data-title="<%= product.name %>" data-caption="<%= productDimension(product.dimension, __) %>, <%= productMaterial(product.material, __) %>" />
                 </div>
               <% } %>
             </div>
@@ -38,9 +38,9 @@
         <hr class="hr-solid"/>
         <div><%= __('SHARE THIS PRODUCT') %>:</div>
         <div class="share-product">
-          <a href="http://www.facebook.com/share.php?u=<%= fullUrl %>&title=<%= __('product.share', product.name) %>"><img src="/images/share-facebook.png" title="Facebook: <%= __('product.share', product.name) %>" width="53" height="53"></a>
-          <a href="http://twitter.com/intent/tweet?status=<%= __('product.share', product.name) %>+<%= fullUrl %>"><img src="/images/share-twitter.png" title="Twitter: <%= __('product.share', product.name) %>" width="53" height="53"></a>
-          <a href="http://pinterest.com/pin/create/bookmarklet/?media=<%= baseUrl %>/images/products/featured/<%= product.slug %>.jpg&url=<%= fullUrl %>&is_video=false&description=<%= __('product.share', product.name) %>"><img src="/images/share-pinterest.png" title="Pinterest: <%= __('product.share', product.name) %>" width="53" height="53"></a>
+          <a href="http://www.facebook.com/share.php?u=<%= fullUrl %>&title=<%= __('product.share', product.name) %>"><img src="/images/share-facebook.png" title="Facebook: <%= __('product.share', product.name) %>" width="53" height="53" /></a>
+          <a href="http://twitter.com/intent/tweet?status=<%= __('product.share', product.name) %>+<%= fullUrl %>"><img src="/images/share-twitter.png" title="Twitter: <%= __('product.share', product.name) %>" width="53" height="53" /></a>
+          <a href="http://pinterest.com/pin/create/bookmarklet/?media=<%= baseUrl %>/images/products/featured/<%= product.slug %>.jpg&url=<%= fullUrl %>&is_video=false&description=<%= __('product.share', product.name) %>"><img src="/images/share-pinterest.png" title="Pinterest: <%= __('product.share', product.name) %>" width="53" height="53" /></a>
         </div>
       </div>
     </div>
@@ -60,12 +60,25 @@
     $('.carousel').carousel($(e.currentTarget).data('index'));
   });
 
+  var intenseProductImages = [];
+
   $(function () {
     $('.carousel').on('slide.bs.carousel', function (e) {
       var index = $('.carousel .item').index(e.relatedTarget);
       $('#product-gallery-thumbnails img').removeClass('active');
       var thumbnail = $('#product-gallery-thumbnails img').get(index);
       $(thumbnail).addClass('active');
+      
+      var productImage = e.relatedTarget.getElementsByTagName('img')[0];
+      if (!intenseProductImages.includes(productImage)) {
+	      Intense(productImage);
+        intenseProductImages.push(productImage);
+      }
     });
+
+    var carouselProductGallery = document.querySelector('#carousel-product-gallery');
+    var productImage = carouselProductGallery.getElementsByTagName('img')[0];
+    Intense(productImage);
+    intenseProductImages.push(productImage);
   });
 </script>
