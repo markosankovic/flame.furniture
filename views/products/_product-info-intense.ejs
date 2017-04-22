@@ -1,0 +1,15 @@
+<div>
+    <div>
+        <%- __(`category.${product.category.name}`) %>
+    </div>
+    <% if (product.dimension) { %>
+        <div>
+            <%= __('Dimension') %>: <%= productDimension(product.dimension, __) %>
+        </div>
+    <% } %>
+    <% if (product.material) { %>
+        <div>
+            <%= __('Material') %>: <%= productMaterial(product.material, __) %>
+        </div>
+    <% } %>
+</div>
