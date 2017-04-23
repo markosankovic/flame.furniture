@@ -1,1 +1,1 @@
-<div class="category-title"><% if (category.parent) { %><%= __(`category.${category.parent.name}`) %> / <% } %><%= __(`category.${category.name}`) %></div>
+<div class="category-title"><% if (category.parent) { %><%- link_to(__(`category.${category.parent.name}`), `/products/${category.parent.slug}`) %> / <% } %><%= __(`category.${category.name}`) %></div>

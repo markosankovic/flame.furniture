@@ -14,7 +14,7 @@ router.use('/products', require('./products'));
 router.get('/', (req, res) => {
   const filenames = fs.readdirSync(`${__dirname}/../public/images/carousel/`);
   let carouselCount = filenames.filter(filename => filename.endsWith('jpg')).length;
-  res.render('index', { title: 'FLAME Furniture Inc.', carouselCount: carouselCount });
+  res.render('index', { title: 'FLAME Furniture Inc. - Unique pieces of furniture that radiate with passion', description: req.__('description.index'), carouselCount: carouselCount });
 });
 
 /* POST subscribe to newsletter and special offers. */
@@ -35,7 +35,7 @@ router.post('/subscribe', (req, res) => {
 
 /* GET about page. */
 router.get('/about', (req, res) => {
-  res.render('about', { title: `${req.__('ABOUT US')} - FLAME Furniture Inc.` });
+  res.render('about', { title: `${req.__('ABOUT US')} - FLAME Furniture Inc.`, description: req.__('description.about') });
 });
 
 /* GET press page. */
@@ -50,7 +50,7 @@ router.get('/gallery', (req, res) => {
 
 /* GET home page. */
 router.get('/contact', (req, res) => {
-  res.render('contact', { title: `${req.__('CONTACT')} - FLAME Furniture Inc.` });
+  res.render('contact', { title: `${req.__('CONTACT')} - FLAME Furniture Inc.`, description: req.__('description.contact') });
 });
 
 /* POST contact send. */
