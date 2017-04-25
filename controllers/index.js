@@ -14,7 +14,7 @@ router.use('/products', require('./products'));
 router.get('/', (req, res) => {
   const filenames = fs.readdirSync(`${__dirname}/../public/images/carousel/`);
   let carouselCount = filenames.filter(filename => filename.endsWith('jpg')).length;
-  res.render('index', { title: 'FLAME Furniture Inc. - Unique pieces of furniture that radiate with passion', description: req.__('description.index'), carouselCount: carouselCount });
+  res.render('index', { title: 'FLAME Furniture Inc. - Handmade unique pieces of furniture', description: req.__('description.index'), carouselCount: carouselCount });
 });
 
 /* POST subscribe to newsletter and special offers. */
