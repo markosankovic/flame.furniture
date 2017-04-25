@@ -79,11 +79,35 @@ app.use(function (req, res, next) {
 // load all files in controllers directory
 app.use(require('./controllers'));
 
-// catch 404 and forward to error handler
-app.use((req, res, next) => {
-  const err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+// Since this is the last non-error-handling
+// middleware use()d, we assume 404, as nothing else
+// responded.
+
+// $ curl http://localhost:3000/notfound
+// $ curl http://localhost:3000/notfound -H "Accept: application/json"
+// $ curl http://localhost:3000/notfound -H "Accept: text/plain"
+
+app.use((req, res) => {
+  res.status(404);
+
+  // respond with html page
+  if (req.accepts('html')) {
+    res.render('404', {
+      url: req.url,
+      title: 'FLAME Furniture Inc. - PAGE NOT FOUND',
+      description: 'The page you are looking for is caught in FLAME'
+    });
+    return;
+  }
+
+  // respond with json
+  if (req.accepts('json')) {
+    res.send({ error: 'Not found' });
+    return;
+  }
+
+  // default to plain text
+  res.type('txt').send('Not found');
 });
 
 // error handler
