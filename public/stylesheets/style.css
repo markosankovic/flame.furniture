@@ -823,6 +823,10 @@ a:focus {
   font-size: 1em;
 }
 
+#about-page .row-second-life-of-a-tree {
+  text-transform: uppercase;
+}
+
 /**
  * Gallery page
  */
