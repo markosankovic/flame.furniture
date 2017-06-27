@@ -110,6 +110,16 @@ body > figure figcaption h2 {
   font-weight: 400 !important;
 }
 
+.alert-success-submit {
+  margin-bottom: 0;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 3px;
+  border-color: #4f4f4f;
+  font-weight: 400;
+  display: none; /* animate on success submit */
+}
+
 /**
 * Toggle Styles
 */

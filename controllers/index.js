@@ -1,4 +1,5 @@
 const express = require('express');
+const rpn = require('request-promise-native');
 const router = express.Router();
 const mailer = require('nodemailer');
 const fs = require('fs');
@@ -56,32 +57,42 @@ router.get('/contact', (req, res) => {
 /* POST contact send. */
 router.post('/contact/send', (req, res) => {
 
-  mongo.db.collection('contacts').insertOne({
-    name: req.body.name,
-    email: req.body.email,
-    subject: req.body.subject,
-    message: req.body.message,
-    created_at: new Date()
-  });
+  const recaptchaSecret = process.env['RECAPTCHA_SECRET'];
+  const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${req.body['g-recaptcha-response']}&remoteip=${req.connection.remoteAddress}`;
 
-  const transporter = mailer.createTransport(process.env.NODEMAILER_TRANSPORTER);
+  rpn(verificationUrl).then(body => {
+    let verificationData = JSON.parse(body);
+    if (verificationData['success']) {
 
-  const mail = {
-    from: 'FLAME Furniture Inc. <flamefurniture@gmail.com>',
-    to: process.env.MAIL_TO,
-    subject: `flame.furniture contact with subject '${req.body.subject}'`,
-    text: `${req.body.name} <${req.body.email}>\n\n${req.body.message}`
-  };
+      mongo.db.collection('contacts').insertOne({
+        name: req.body.name,
+        email: req.body.email,
+        subject: req.body.subject,
+        message: req.body.message,
+        created_at: new Date()
+      });
 
-  transporter.sendMail(mail, (error, response) => {
-    if (error) {
-      debug(error);
-      res.status(500).json({ success: false });
-    } else {
-      debug(response);
-      res.json({ success: true });
-    }
-    transporter.close();
+      const transporter = mailer.createTransport(process.env['NODEMAILER_TRANSPORTER']);
+
+      const mail = {
+        from: 'FLAME Furniture Inc. <flamefurniture@gmail.com>',
+        to: process.env['MAIL_TO'],
+        subject: `flame.furniture contact with subject '${req.body.subject}'`,
+        text: `${req.body.name} <${req.body.email}>\n\n${req.body.message}`
+      };
+
+      transporter.sendMail(mail, (error, response) => {
+        if (error) {
+          debug(error);
+          res.status(500).json({ success: false });
+        } else {
+          debug(response);
+          res.json({ success: true });
+        }
+        transporter.close();
+      });
+
+    } /* recaptcha verification success */
   });
 });
 

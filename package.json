@@ -26,6 +26,8 @@
     "mongodb": "^2.2.11",
     "morgan": "~1.7.0",
     "nodemailer": "^2.6.4",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
     "serve-favicon": "~2.3.0",
     "xoauth2": "^1.2.0"
   },

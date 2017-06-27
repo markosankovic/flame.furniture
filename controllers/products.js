@@ -1,4 +1,5 @@
 const express = require('express');
+const rpn = require('request-promise-native');
 const router = express.Router();
 const fs = require('fs');
 const sizeOf = require('image-size');
@@ -49,7 +50,7 @@ router.get('/:slug?', (req, res, next) => {
         const dimensions = sizeOf(`${__dirname}/../public/images/products/featured/${product.slug}.jpg`);
         product.featured_image_layout = dimensions.width > dimensions.height ? 'landscape' : 'portrait';
       }
-      res.render('products/index', { title: `${req.__('PRODUCTS')} - FLAME Furniture Inc.`, description: req.__('description.products.index'),  products: products });
+      res.render('products/index', { title: `${req.__('PRODUCTS')} - FLAME Furniture Inc.`, description: req.__('description.products.index'), products: products });
     }
   });
 });
@@ -70,40 +71,50 @@ router.get('/:slug/buy', (req, res) => {
 /* POST product inquiry send action. */
 router.post('/:slug/buy/send', (req, res) => {
 
-  co(function* () {
-    let product = yield mongo.db.collection('products').findOne({ slug: req.params.slug });
-    if (product) {
+  const recaptchaSecret = process.env['RECAPTCHA_SECRET'];
+  const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${req.body['g-recaptcha-response']}&remoteip=${req.connection.remoteAddress}`;
 
-      mongo.db.collection('inquiries').insertOne({
-        name: req.body.name,
-        email: req.body.email,
-        message: req.body.message,
-        product: product,
-        created_at: new Date()
-      });
+  rpn(verificationUrl).then(body => {
+    let verificationData = JSON.parse(body);
+    if (verificationData['success']) {
+      co(function* () {
+        let product = yield mongo.db.collection('products').findOne({ slug: req.params.slug });
+        if (product) {
 
-      const productUrl = req.protocol + '://' + req.get('host') + `/products/${product.slug}`;
+          mongo.db.collection('inquiries').insertOne({
+            name: req.body.name,
+            email: req.body.email,
+            message: req.body.message,
+            product: product,
+            created_at: new Date()
+          });
 
-      const transporter = mailer.createTransport(process.env.NODEMAILER_TRANSPORTER);
+          const productUrl = req.protocol + '://' + req.get('host') + `/products/${product.slug}`;
 
-      const mail = {
-        from: 'FLAME Furniture Inc. <flamefurniture@gmail.com>',
-        to: process.env.MAIL_TO,
-        subject: `flame.furniture inquiry for ${product.name}`,
-        text: `${req.body.name} <${req.body.email}>\n\n${product.name}\n${productUrl}\n\n${req.body.message}`
-      };
+          const transporter = mailer.createTransport(process.env['NODEMAILER_TRANSPORTER']);
 
-      transporter.sendMail(mail, (error, response) => {
-        if (error) {
-          debug(error);
-          res.status(500).json({ success: false });
-        } else {
-          debug(response);
-          res.json({ success: true });
+          const mail = {
+            from: 'FLAME Furniture Inc. <flamefurniture@gmail.com>',
+            to: process.env['MAIL_TO'],
+            subject: `flame.furniture inquiry for ${product.name}`,
+            text: `${req.body.name} <${req.body.email}>\n\n${product.name}\n${productUrl}\n\n${req.body.message}`
+          };
+
+          transporter.sendMail(mail, (error, response) => {
+            if (error) {
+              debug(error);
+              res.status(500).json({ success: false });
+            } else {
+              debug(response);
+              res.json({ success: true });
+            }
+            transporter.close();
+          });
         }
-        transporter.close();
       });
     }
+  }).catch(err => {
+    console.log('ERR: ', err);
   });
 });
 

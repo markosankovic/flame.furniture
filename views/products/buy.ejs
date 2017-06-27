@@ -13,28 +13,26 @@
         <div class="row form-row">
           <div class="col-sm-12">
             <h3><%= __('SEND US AN INQUIRY') %></h3>
-            <p class="notice text-light"><%= __('products.buy.notice') %></p>
             <form action="/products/<%= product.slug %>/buy/send" method="post" name="inquiryForm">
+              <div class="g-recaptcha" data-sitekey="6LfT4CYUAAAAAJLcWnal7-EW8TC8guRUwjTJpkJr" data-size="invisible" data-callback="formSubmit"></div>
               <div class="form-group">
                 <label for="name"><%= __('NAME') %></label>
-                <input type="text" name="name" class="form-control form-control-border-1" id="name" required>
+                <input type="text" name="name" class="form-control form-control-border-1" id="name" required />
               </div>
               <div class="form-group">
                 <label for="email"><%= __('EMAIL') %></label>
-                <input type="email" name="email" class="form-control form-control-border-2" id="email" required>
+                <input type="email" name="email" class="form-control form-control-border-2" id="email" required />
               </div>
               <div class="form-group">
                 <label for="message"><%= __('MESSAGE') %></label>
-                <textarea name="message" class="form-control form-control-border-4" rows="7" id="message" required></textarea>
+                <textarea name="message" class="form-control form-control-border-4" rows="7" id="message" required /></textarea>
               </div>
               <button type="submit" class="btn btn-submit btn-flame"><%= __('SEND') %></button>
             </form>
           </div>
         </div>
-        <div class="row" style="display: none;">
-          <div class="col-md-12">
-            <h5 class="uppercase"><%= __('products.buy.thank_you') %></h5>
-          </div>
+        <div class="alert alert-success alert-success-submit form-control-border-1" role="alert">
+          <%= __('products.buy.thank_you') %>
         </div>
       </div>
     </div>
@@ -42,21 +40,27 @@
 </div>
 
 <script type="text/javascript">
-  (function() {
-    var $form = $('form[name=inquiryForm]');
+
+  $form = $('form[name=inquiryForm]');
+
+  $form.submit(function (event) {
+    event.preventDefault();
+    grecaptcha.reset();
+    grecaptcha.execute();
+  });
+
+  function formSubmit(token) {
     var $container = $('.inquiry-container');
-    $form.submit(function(event) {
-      event.preventDefault();
-      $('button[type=submit]', $form).addClass('disabled');
-      $.post('/products/<%= product.slug %>/buy/send', $(this).serialize())
-        .done(function() {
-          $('.form-row', $container).slideUp(250);
-          $('.form-row + div', $container).slideDown(450);
-        }).fail(function () {
-          alert(jqXHR.responseText);
-        }).always(function () {
-          $('button[type=submit]', $form).removeClass('disabled');
-        });
-    });
-  })();
+    $('button[type=submit]', $form).addClass('disabled');
+    $.post('/products/<%= product.slug %>/buy/send', $form.serialize())
+      .done(function() {
+        $form.find('input[type=text], input[type=email], textarea').val('');
+        $('.form-row', $container).slideUp(250);
+        $('.form-row + div', $container).slideDown(450);
+      }).fail(function () {
+        alert(jqXHR.responseText);
+      }).always(function () {
+        $('button[type=submit]', $form).removeClass('disabled');
+      });
+  }
 </script>
