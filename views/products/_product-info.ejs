@@ -2,6 +2,10 @@
     <h2 class="product-name">
         <%- link_to(product.name, `/products/${product.slug}`) %>
     </h2>
+    <% if (product.signature) { %>
+        <div class="signature">Signature line</div>
+        <br/>
+    <% } %>
     <div class="product-category-name">
         <%- link_to(__(`category.${product.category.name}`), `/products/${product.category.slug}`) %>
     </div>

@@ -996,11 +996,6 @@ nav.categories ul ul li {
   text-transform: uppercase;
 }
 
-.heading-signature {
-  font-family: 'Satisfy', cursive;
-  text-transform: capitalize;
-}
-
 .product-info {
   position: relative;
   font-weight: lighter;
@@ -1025,6 +1020,12 @@ nav.categories ul ul li {
 
 .product-info .share-product a {
   margin-right: 5px;
+}
+
+.signature {
+  font-family: 'Satisfy', cursive;
+  font-size: 1.42em;
+  color: #4f4f4f;
 }
 
 .category-title {

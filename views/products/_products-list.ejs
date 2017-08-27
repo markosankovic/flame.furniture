@@ -6,6 +6,9 @@
         <h3 class="product-name">
           <%- link_to(product.name, `/products/${product.slug}`) %>
         </h3>
+        <% if (product.signature) { %>
+          <div class="signature">Signature line</div>
+        <% } %>
         <div class="product-category-name">
           <%- link_to(__(`category.${product.category.name}`), `/products/${product.category.slug}`) %>
         </div>
