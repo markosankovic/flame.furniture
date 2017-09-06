@@ -16,6 +16,7 @@
   { "_id": "59af155347eb888bc28ce84f", "category_id": "586e53d5ac8b94a3c6d6285e", "name": "BLACK WAVE", "slug": "black-wave", "dimension": { "width": 125, "depth": 40, "height": 35 }, "material": ["Wood - acacia", "Metal"] },
   { "_id": "59b003af107c802bb030c87a", "category_id": "586e53d5ac8b94a3c6d6285e", "name": "THE CLIF", "slug": "the-clif", "dimension": { "width": 90, "depth": 45, "height": 40 }, "material": ["Concrete", "Metal"] },
   { "_id": "5888e93287b4c53410878a37", "category_id": "586e5415ac8b94a3c6d6285f", "name": "TYPEWRITER", "slug": "typewriter", "dimension": { "width": 140, "depth": 70, "height": 78 }, "material": ["Wood - oak", "Metal"] },
+  { "_id": "59b00688107c802bb030c87c", "category_id": "59b00639107c802bb030c87b", "name": "AMY", "slug": "amy", "dimension": { "width": 250, "depth": 70, "height": 100 }, "material": ["Wood - poplar", "Metal"] },
   { "_id": "5888e93287b4c53410878a38", "category_id": "586f6c573bfefcbe1ce643e2", "name": "JOLENE", "slug": "jolene", "dimension": { "width": 210, "depth": 75, "height": 50 }, "material": ["Wood - oak", "Fabric"] },
   { "_id": "58fb2b0f446b668d314ecccc", "category_id": "586f6c7f3bfefcbe1ce643e3", "name": "MANGOULA", "slug": "mangoula", "dimension": { "width": 180, "depth": 35, "height": 43 }, "material": ["Wood - oak"] },
   { "_id": "59aff899f5b224f4f8b8307f", "category_id": "586f6c7f3bfefcbe1ce643e3", "name": "EYE", "slug": "eye", "dimension": { "width": 180, "depth": 40, "height": 45 }, "material": ["Wood - reclaimed oak (100 + years old)", "Metal", "Concrete"] },

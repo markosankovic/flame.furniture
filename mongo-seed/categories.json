@@ -3,6 +3,7 @@
   { "_id": "586e5350ac8b94a3c6d6285d", "parent_id": "586e46b9c0221c321bbfb1a3", "name": "Dining Tables", "slug": "dining-tables" },
   { "_id": "586e53d5ac8b94a3c6d6285e", "parent_id": "586e46b9c0221c321bbfb1a3", "name": "Coffee Tables", "slug": "coffee-tables" },
   { "_id": "586e5415ac8b94a3c6d6285f", "parent_id": "586e46b9c0221c321bbfb1a3", "name": "Writing Desks", "slug": "writing-desks" },
+  { "_id": "59b00639107c802bb030c87b", "parent_id": "586e46b9c0221c321bbfb1a3", "name": "Bar Tables", "slug": "bar-tables" },
   { "_id": "586f6c3e3bfefcbe1ce643e1", "name": "Seatings", "slug": "seatings" },
   { "_id": "586f6c573bfefcbe1ce643e2", "parent_id": "586f6c3e3bfefcbe1ce643e1", "name": "Sofas", "slug": "sofas" },
   { "_id": "586f6c7f3bfefcbe1ce643e3", "parent_id": "586f6c3e3bfefcbe1ce643e1", "name": "Benches", "slug": "benches" },
