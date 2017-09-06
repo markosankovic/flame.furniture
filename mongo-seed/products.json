@@ -20,6 +20,7 @@
   { "_id": "5888e93287b4c53410878a3a", "category_id": "586f6ca93bfefcbe1ce643e5", "name": "PRIZMATA", "slug": "prizmata", "dimension": { "diameter": 39, "height": 45 }, "material": ["Wood - oak"] },
   { "_id": "5888e93287b4c53410878a3b", "category_id": "586f6ce63bfefcbe1ce643e7", "name": "KLEMENZA", "slug": "klemenza", "dimension": { "width": 200, "depth": 45, "height": 45 }, "material": ["Wood - oak", "Metal"] },
   { "_id": "5888e93287b4c53410878a3c", "category_id": "586f6d3b3bfefcbe1ce643e8", "name": "AKORNA", "slug": "akorna", "dimension": { "width": 100, "depth": 45, "height": 58 }, "material": ["MDF", "Wood - reclaimed oak (100 + years old)"] },
+  { "_id": "59afda189cc4790f69eff1d9", "category_id": "59afd78d9cc4790f69eff1d8", "name": "CABANA", "slug": "cabana", "dimension": { "width": 126, "depth": 30, "height": 86 }, "material": ["Wood - reclaimed oak (100 + years old)"] },
   { "_id": "5888e93287b4c53410878a3d", "category_id": "586f6d413bfefcbe1ce643e9", "name": "BALI BEAM", "slug": "bali-beam", "dimension": null, "material": ["Wood - reclaimed oak (100 + years old)"], "signature": true },
   { "_id": "5888e93287b4c53410878a3f", "category_id": "586f6d673bfefcbe1ce643eb", "name": "CUBE", "slug": "cube", "dimension": { "width": 23, "depth": 23, "height": 33 }, "material": ["Wood - oak", "Metal"] },
   { "_id": "5888e93287b4c53410878a40", "category_id": "586f6d673bfefcbe1ce643eb", "name": "EUREKA", "slug": "eureka", "dimension": { "width": 23, "depth": 23, "height": 33 }, "material": ["Wood - oak", "Metal"] },
