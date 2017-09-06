@@ -74,6 +74,12 @@
 	      Intense(productImage);
         intenseProductImages.push(productImage);
       }
+
+      // http://jsfiddle.net/4HDBe/4/
+      var nextH = $(e.relatedTarget).height();
+      $(this).find('.active.item').parent().animate({
+        height: nextH
+      }, 250);
     });
 
     var carouselProductGallery = document.querySelector('#carousel-product-gallery');
