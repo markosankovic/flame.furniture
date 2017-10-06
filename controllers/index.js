@@ -64,14 +64,6 @@ router.post('/contact/send', (req, res) => {
     let verificationData = JSON.parse(body);
     if (verificationData['success']) {
 
-      mongo.db.collection('contacts').insertOne({
-        name: req.body.name,
-        email: req.body.email,
-        subject: req.body.subject,
-        message: req.body.message,
-        created_at: new Date()
-      });
-
       const transporter = mailer.createTransport(process.env['NODEMAILER_TRANSPORTER']);
 
       const mail = {
@@ -90,6 +82,14 @@ router.post('/contact/send', (req, res) => {
           res.json({ success: true });
         }
         transporter.close();
+      });
+
+      mongo.db.collection('contacts').insertOne({
+        name: req.body.name,
+        email: req.body.email,
+        subject: req.body.subject,
+        message: req.body.message,
+        created_at: new Date()
       });
 
     } /* recaptcha verification success */
