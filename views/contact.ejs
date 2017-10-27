@@ -3,7 +3,7 @@
     <div class="row" id="contact-info">
       <div class="col-md-12">
         <div class="row">
-          <div class="col-sm-8">
+          <div class="col-md-8">
             <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyADQQInrkjGdBorZU4Y8fSN840Q_Wbw02I'></script>
             <div style='overflow:hidden;height:399px;width:100%;'>
               <div id='gmap_canvas' style='height:399px;width:100%;'></div>
@@ -39,20 +39,21 @@
               google.maps.event.addDomListener(window, 'load', init_map);
             </script>
           </div>
-          <div class="col-sm-4">
+          <div class="col-md-4">
             <h4><%= __('OUR HQ IS LOCATED AT') %></h4>
-            <div><%- __('contact.address') -%></div>
-            <h4><%= __('COORDINATES') %></h4>
             <div>
-              <a href="bingmaps:?cp=44.7735444~20.5383399">
+              <%- __('contact.address') -%>
+              _ <a href="bingmaps:?cp=44.7735444~20.5383399">
                 <a href="http://maps.apple.com/maps?q=44.7735444, 20.5383399"> 
-                  44.7735444, 20.5383399
+                  OPEN MAP
                 </a>
               </a>
             </div>
             <h4><%= __('CALL US') %></h4>
             <div><a href="tel:381-11-4088751">+381 11 408 8751</a></div>
             <div><a href="tel:381-64-2435333">+381 64 243 5333</a></div>
+            <h4><%= __('EMAIL') %></h4>
+            <div><a href="mailto: info@flamefurniture.rs?subject=Hello from flame.furniture">info@flamefurniture.rs</a></div>
             <h4><%= __('BUSINESS HOURS') %></h4>
             <div><%= __('contact.business_hours') %></div>
           </div>
