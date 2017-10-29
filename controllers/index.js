@@ -44,11 +44,6 @@ router.get('/press', (req, res) => {
   res.render('press', { title: `${req.__('PRESS')} - FLAME Furniture Inc.` });
 });
 
-/* GET gallery page. */
-router.get('/gallery', (req, res) => {
-  res.render('gallery', { title: `${req.__('GALLERY')} - FLAME Furniture Inc.` });
-});
-
 /* GET home page. */
 router.get('/contact', (req, res) => {
   res.render('contact', { title: `${req.__('CONTACT')} - FLAME Furniture Inc.`, description: req.__('description.contact') });
