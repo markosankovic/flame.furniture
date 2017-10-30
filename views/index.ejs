@@ -37,6 +37,9 @@
 </div>
 
 <script type="text/javascript">
+  $(document).ready(function(e) {
+    $('.carousel').carousel({interval: false});
+  });
   $(document).bind('keyup', function(e) {
     if (e.which == 39) {
       $('.carousel').carousel('next');
