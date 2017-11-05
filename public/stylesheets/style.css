@@ -1027,6 +1027,30 @@ nav.categories ul ul li {
   color: #4f4f4f;
 }
 
+@media (min-width: 768px) {
+  .signature-category-item a {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.42em;
+    text-transform: none;
+    background-color: #e76647;
+    color: white;
+    padding: 3px 9px !important;
+    border-radius: 3px;
+    transition: background-color 150ms;
+    transition-timing-function: ease-in;
+  }
+  
+  .signature-category-item a:hover {
+    background-color: rgba(231, 102, 71, .75);
+  }
+}
+
+@media (min-width: 992px) {
+  .signature-category-item a {
+    margin-bottom: 4px;
+  }
+}
+
 .category-title {
   text-align: center;
   text-transform: uppercase;
@@ -1067,6 +1091,12 @@ nav.categories ul ul li {
 @media (min-width: 1200px) {
   .grid-item.product-item {
     width: 33%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid-signature .grid-item {
+    width: 50%;
   }
 }
 

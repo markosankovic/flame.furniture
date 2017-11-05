@@ -1,7 +1,11 @@
-<div class="grid">
+<div class="grid <% if (locals.category && locals.category.slug === 'signature') { %>grid-signature<% } %>">
   <% for (let product of products) { %>
     <div class="grid-item product-item layout-<%= product.featured_image_layout %>">
-      <img src="/images/products/featured/<%= product.slug %>.jpg" />
+      <% if (locals.category && locals.category.slug === 'signature') { %>
+        <img src="/images/products/featured/<%= product.slug %>-signature.jpg" />
+      <% } else { %>
+        <img src="/images/products/featured/<%= product.slug %>.jpg" />
+      <% } %>
       <div class="product-info text-center" data-href="<%= `/products/${product.slug}` %>">
         <h3 class="product-name">
           <%- link_to(product.name, `/products/${product.slug}`) %>

@@ -26,15 +26,22 @@ router.get('/:slug?', (req, res, next) => {
       res.render('products/product', { title: `${product.name} - FLAME Furniture Inc.`, description: req.__('description.products.product', product.name, req.__(`category.${product.category.name}`)), product: product });
     } else {
       let category = _.find(_categories, { slug: req.params.slug });
+      if (req.params.slug === 'signature') {
+        category = { '_id': '59ff37975d0bbd8610fe20a1', 'name': 'Signature line', 'slug': 'signature' };
+      }
       if (category) {
         let products = _.filter(_products, { category_id: category._id });
-        if (category.parent_id) {
-          category.parent = _.find(_categories, { _id: category.parent_id });
-          products = _.filter(_products, { category_id: category._id });
+        if (req.params.slug === 'signature') {
+          products = _.filter(_products, { signature: true });
         } else {
-          let subcategories = _.filter(_categories, { parent_id: category._id });
-          let subcategoriesIds = subcategories.map(subcategory => subcategory._id);
-          products = _.filter(_products, (product) => product.category_id === category._id || _.includes(subcategoriesIds, product.category_id));
+          if (category.parent_id) {
+            category.parent = _.find(_categories, { _id: category.parent_id });
+            products = _.filter(_products, { category_id: category._id });
+          } else {
+            let subcategories = _.filter(_categories, { parent_id: category._id });
+            let subcategoriesIds = subcategories.map(subcategory => subcategory._id);
+            products = _.filter(_products, (product) => product.category_id === category._id || _.includes(subcategoriesIds, product.category_id));
+          }
         }
         for (let product of products) {
           product.category = _.find(_categories, { _id: product.category_id });

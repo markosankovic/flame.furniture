@@ -4,7 +4,7 @@
       <%- link_to(__(`category.${category.name}`), `/products/${category.slug}`) %>
       <% if (category.subcategories && category.subcategories.length > 0) { %>
         <ul class="text-left">
-          <% for (let subcategory of category.subcategories) { %>              
+          <% for (let subcategory of category.subcategories) { %>
             <li>
               <%- link_to(__(`category.${subcategory.name}`), `/products/${subcategory.slug}`) %>                  
             </li>
@@ -13,4 +13,5 @@
       <% } %>
     </li>
   <% } %>
+    <li class="signature-category-item"><%- link_to('Signature line', `/products/signature`) %> </li>
 </ul>
