@@ -1034,7 +1034,7 @@ nav.categories ul ul li {
     text-transform: none;
     background-color: #e76647;
     color: white;
-    padding: 3px 9px !important;
+    padding: 3px 9px 2px 9px !important;
     border-radius: 3px;
     transition: background-color 150ms;
     transition-timing-function: ease-in;
